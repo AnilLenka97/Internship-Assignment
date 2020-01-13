@@ -1,0 +1,80 @@
+body
+{
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#heading
+{
+    color: white;font-family:
+    sans-serif;
+    font-size: 34px;
+}
+#table
+{
+    background-color: teal;
+    opacity:0.85;
+    border-radius: 10px;
+    padding: 50px 50px 25px 50px;
+    margin-top: 15px;
+}
+.caption
+{
+    color: white;
+    font-family: sans-serif;
+    font-size: 22px;
+}
+.star
+{
+    color: red;
+}
+.input1
+{
+    width: 260px;
+    border-radius: 7px;
+    font-size: 15px;
+    padding: 10px;
+}
+.input2
+{
+    width: 283px;
+    font-size: 15px; 
+    border-radius: 7px;
+    padding: 10px;
+}
+#mobile
+{
+    width: 70px;
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 15px;
+}
+.mobile
+{
+    width: 185px;
+    border-radius:
+    7px;padding: 10px;
+    font-size: 15px
+}
+.address
+{
+    width: 260px;
+    border-radius: 7px;
+    padding: 10px;
+    font-family: sans-serif;
+    font-size: 15px;
+    height: 80px;
+}
+td
+{
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+#submit
+{
+    color: black;
+    font-family: sans-serif;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 3px;
+}
