@@ -9,6 +9,7 @@ body
     color: white;font-family:
     sans-serif;
     font-size: 34px;
+    text-align: center;
 }
 #table
 {
@@ -17,6 +18,7 @@ body
     border-radius: 10px;
     padding: 50px 50px 25px 50px;
     margin-top: 15px;
+    margin-left: 8.5%;
 }
 .caption
 {
