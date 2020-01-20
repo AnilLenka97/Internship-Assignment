@@ -94,16 +94,16 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="requiredField">Address 1 </label>
+                        <label class="requiredField">Present Address </label>
                     </td>
                     <td>
-                        <textarea id="addr1" placeholder="Enter your Address 1" class="address" onchange="colorChangeAddr1()" title="It shouldn't be empty...Enter your full address with ZIP code..."></textarea>
+                        <textarea id="presentAddress" placeholder="Enter your Present Address" class="address" onchange="colorChangePresentAddress()" title="It shouldn't be empty...Enter your full address with ZIP code..."></textarea>
                     </td>
                     <td>
-                        <label class="optionalField">Address 2</label>
+                        <label class="optionalField">Permanent Address <p style="font-size: small;">( Click here <input type="checkbox" id="aadressCopyCheckbox" onclick="addressCopy()"> , if the present address<br>is same as permanent address. )</p></label>
                     </td>
                     <td>
-                        <textarea placeholder="Enter your Address 2" class="address" title="It is optional to fill...Enter the full address with ZIP code..."></textarea>
+                        <textarea id="permanentAddress" placeholder="Enter your Permanent Address" class="address" title="It is optional to fill...Enter the full address with ZIP code..."></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -162,18 +162,18 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4" align="center" style="padding-top: 10px;">
+                    <td colspan="4" style="padding-top: 10px;text-align: center;">
                         <input type="button" id="resetButton" onclick="captcha()">
-                        <label id="digit1" style="font-family: sans-serif;font-size: 22px;color: white;">  </label>
-                        <label id="symbol" style="font-family: sans-serif;font-size: 22px;color: white;">  </label>
-                        <label id="digit2" style="font-family: sans-serif;font-size: 22px;color: white;">  </label>
-                        <span style="font-family: sans-serif;font-size: 22px;color: white;">=   </span>
+                        <label id="digit1" style="font-family: sans-serif;font-size: 22px;color: white;"></label>
+                        <label id="symbol" style="font-family: sans-serif;font-size: 22px;color: white;"></label>
+                        <label id="digit2" style="font-family: sans-serif;font-size: 22px;color: white;"></label>
+                        <span style="font-family: sans-serif;font-size: 22px;color: white;">=</span>
                         <input type="text" id="answer" onchange="colorChangeAnswer()" title="It should be filled with calculation value of the left equation..." 
                         style="width: 35px;font-size: 15px; border-radius: 7px;padding: 10px;background-color: rgba(255, 255, 255, 0.829);">
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4" rowspan="2" align="center" style="padding-top: 20px;">
+                    <td colspan="4" style="padding-top: 20px;text-align: center;">
                         <input type="submit" value="SUBMIT" id="submit" title="Click here to upload the data...">
                     </td>
                 </tr>

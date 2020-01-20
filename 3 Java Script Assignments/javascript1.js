@@ -8,7 +8,7 @@ var password=document.getElementById("password");
 var reEnterPassword=document.getElementById("reEnterPassword");
 var phone1=document.getElementById("phone1");
 var phone2=document.getElementById("phone2");
-var addr1=document.getElementById("addr1");
+var presentAddress=document.getElementById("presentAddress");
 var country=document.getElementById("country");
 var state=document.getElementById("state");
 var city=document.getElementById("city");
@@ -92,11 +92,11 @@ function validate()
         }
     }
     //Address validation
-    if(addr1.value=="")
+    if(presentAddress.value=="")
     {
-        addr1.focus();
+        presentAddress.focus();
         count++;
-        addr1.style.backgroundColor="rgb(243, 147, 147)";
+        presentAddress.style.backgroundColor="rgb(243, 147, 147)";
     }
     //Country validation
     if(country.value=="Select")
@@ -200,9 +200,9 @@ function colorChangePhone2()
     phone2.style.backgroundColor="rgba(255, 255, 255, 0.829)";
 }
 
-function colorChangeAddr1()
+function colorChangePresentAddress()
 {
-    addr1.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+    presentAddress.style.backgroundColor="rgba(255, 255, 255, 0.829)";
 }
 
 function colorChangeCountry()
@@ -236,4 +236,10 @@ function captcha()
     document.getElementById("digit1").innerHTML = randNum1;
     document.getElementById("digit2").innerHTML = randNum2;
     document.getElementById("symbol").innerHTML = randSymbol;
+}
+
+//Address copy(when present address is same as permanent address)
+function addressCopy()
+{
+    document.getElementById("permanentAddress").innerHTML = presentAddress.value;
 }
