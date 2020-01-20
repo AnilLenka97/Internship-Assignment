@@ -59,9 +59,9 @@ function validate()
         count++;
         gender.style.backgroundColor="rgb(243, 147, 147)";
     }
-    //Password validation
+    //Password validation...the password should contain atleast one capital letter, one small letter, one number, one special character and the length should be between 8 to 30
     var passLen = password.value.length;
-    if (passLen >= 30 || passLen < 8)
+    if((!/[a-z]/.test(password.value)) || (!/[A-Z]/.test(password.value)) || (!/[0-9]/.test(password.value)) || (!/[*&%$#@?]/.test(password.value)) || (passLen >= 30 || passLen < 8))
     {
         password.focus();
         count++;
