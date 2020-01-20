@@ -1,0 +1,103 @@
+body
+{
+    background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#banner
+{
+    margin: -5% 0% -5% 31%;
+}
+#heading  /* Page heading properties */
+{
+    color: #73bae4;
+    font-family: sans-serif;
+    font-size: 30px;
+    padding-bottom: 17px;
+}
+#table  /* Table properties */
+{
+    background-color: rgba(37, 48, 48, 0.329);
+    opacity:0.85;
+    border-radius: 10px;
+    padding: 15px 50px 15px 50px;
+    margin-left: 6%;
+}
+.requiredField , .optionalField /* Input field caption properties */
+{
+    color: white;
+    font-family: sans-serif;
+    font-size: 22px;
+}
+
+.input1  /* Input field properties */
+{
+    width: 260px;
+    border-radius: 7px;
+    font-size: 15px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.829);
+}
+.input2  /* input field properties */
+{
+    width: 283px;
+    font-size: 15px; 
+    border-radius: 7px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.829);
+}
+.mobileCode
+{
+    width: 70px;
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 15px;
+    background-color: rgba(255, 255, 255, 0.829);
+}
+.mobile
+{
+    width: 185px;
+    border-radius:
+    7px;padding: 10px;
+    font-size: 15px;
+    background-color: rgba(255, 255, 255, 0.829);
+}
+.address  /* Address area properties */
+{
+    width: 260px;
+    border-radius: 7px;
+    padding: 10px;
+    font-family: sans-serif;
+    font-size: 15px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.829);
+}
+td /* Table data properties */
+{
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+#submit /* Submit button properties */
+{
+    color: black;
+    font-family: sans-serif;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.829);
+    text-align: center;
+}
+#resetButton
+{
+    background-image:url('refresh_image.jpg') ;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 20px;
+    width: 20px;
+}
+.requiredField::after
+{
+    content: "*";
+    color: red;
+    font-weight: bold;
+}

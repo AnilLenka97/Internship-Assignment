@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            javaScript Assignment
+        </title>
+        <link rel="stylesheet" type="text/css" href="mystyle.css">
+        <meta name="description" content="Registration form using HTML, CSS and JavScript">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    </head>
+    <body onload="captcha()">
+        <form onsubmit=" return validate()">
+            <div></div>
+            <img id="banner" src="banner.jpg" alt="Banner Image"/>
+            <table id="table">
+                <tr>
+                    <th id="heading" colspan="4">Registration Form</th>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="requiredField">First Name </label>
+                    </td>
+                    <td>
+                        <input type="text" id="firstName" placeholder="Enter your First Name" class="input1"  onchange="colorChangeFirstName()" title="It shouldn't be empty...Alphabates and characters are allowed only...">
+                    </td>
+                    <td>
+                        <label class="requiredField">Last Name </label>
+                    </td>
+                    <td>
+                        <input type="text" id="lastName" placeholder="Enter your Last Name" class="input1" onchange="colorChangeLastName()" title="It shouldn't be empty...Alphabates and characters are allowed only...">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="requiredField">E-mail / User ID </label>
+                    </td>
+                    <td>
+                        <input type="text" id="eMail" placeholder="Enter your E-mail" class="input1" onchange="colorChangeEMail()" title="It shouldn't be empty...Alphanumeric characters are allowed only...">
+                    </td>
+                    <td>
+                        <label class="requiredField">Gender </label>
+                    </td>
+                    <td>
+                        <select class="input2" id="gender" onchange="colorChangeGender()" title="It should be selected any option from the drop down box...">
+                            <option value="Select">Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="requiredField">Password </label>
+                    </td>
+                    <td>
+                        <input type="password" id="password" placeholder="Enter your password" class="input1" onmouseover="" onchange="colorChangePassword()" title="It shouldn't be empty...All characters are allowed... the password length should be 8 - 30 ">
+                    </td>
+                    <td>
+                        <label class="requiredField">Re-Enter Password </label>
+                    </td>
+                    <td>
+                        <input type="password" id="reEnterPassword" placeholder="Re-Enter your Password" class="input1" onchange="colorChangeReEnterPassword()" title="It should be same as password...">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="requiredField">Phone 1 </label>
+                    </td>
+                    <td>
+                        <select class="mobileCode">
+                            <option value="+91">+91</option>
+                            <option value="+91">+92</option>
+                            <option value="+91">+93</option>
+                            <option value="+91">+94</option>
+                            <option value="+91">+95</option>
+                        </select>
+                        <input type="number" id="phone1" placeholder="Enter Your Mobile 1" class="mobile" onchange="colorChangePhone1()" title="It shouldn't be empty...Numbers are allowed only...">
+                    </td>
+                    <td>
+                        <label class="optionalField">Phone 2</label>
+                    </td>
+                    <td>
+                        <select class="mobileCode">
+                            <option value="+91">+91</option>
+                            <option value="+91">+92</option>
+                            <option value="+91">+93</option>
+                            <option value="+91">+94</option>
+                            <option value="+91">+95</option>
+                        </select>
+                        <input type="number" id="phone2" placeholder="Enter Your Mobile 2" class="mobile" onchange="colorChangePhone2()" title="It is optional to fill...Numbers are allowed only...">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="requiredField">Address 1 </label>
+                    </td>
+                    <td>
+                        <textarea id="addr1" placeholder="Enter your Address 1" class="address" onchange="colorChangeAddr1()" title="It shouldn't be empty...Enter your full address with ZIP code..."></textarea>
+                    </td>
+                    <td>
+                        <label class="optionalField">Address 2</label>
+                    </td>
+                    <td>
+                        <textarea placeholder="Enter your Address 2" class="address" title="It is optional to fill...Enter the full address with ZIP code..."></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="requiredField">Country </label>
+                    </td>
+                    <td>
+                        <select class="input2" id="country" onchange="colorChangeCountry()" title="It should be selected with some option from the drop down box...">
+                            <option value="Select">Select</option>
+                            <option value="India">India</option>
+                            <option value="Canada">Canada</option>
+                            <option value="USA">USA</option>
+                            <option value="UK">UK</option>
+                            <option value="China">China</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label class="requiredField">State </label>
+                    </td>
+                    <td>
+                        <select class="input2" id="state" onchange="colorChangeState()" title="It should be selected with some option from the drop down box...">
+                            <option value="Select">Select</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Tamil">Tamil Nadu</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Gujrat">Gujrat</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <label class="requiredField">City </label>
+                    </td>
+                    <td>
+                        <select class="input2" id="city" onchange="colorChangeCity()" title="It should be selected with some option from the drop down box...">
+                            <option value="Select">Select</option>
+                            <option value="Bhubaneswar">Bhubaneswar</option>
+                            <option value="Cuttack">Cuttack</option>
+                            <option value="Puri">Puri</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Kokata">Kokata</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                        </select>
+                    </td> 
+                    <td>
+                        <label class="optionalField">Subscribe News Letter ?</label>
+                    </td>
+                    <td>
+                        <select class="input2" title="It is optional to fill...it can be selected with some option from the drop down box...">
+                            <option value="Select">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="center" style="padding-top: 10px;">
+                        <input type="button" id="resetButton" onclick="captcha()">
+                        <label id="digit1" style="font-family: sans-serif;font-size: 22px;color: white;">  </label>
+                        <label id="symbol" style="font-family: sans-serif;font-size: 22px;color: white;">  </label>
+                        <label id="digit2" style="font-family: sans-serif;font-size: 22px;color: white;">  </label>
+                        <span style="font-family: sans-serif;font-size: 22px;color: white;">=   </span>
+                        <input type="text" id="answer" onchange="colorChangeAnswer()" title="It should be filled with calculation value of the left equation..." 
+                        style="width: 35px;font-size: 15px; border-radius: 7px;padding: 10px;background-color: rgba(255, 255, 255, 0.829);">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" rowspan="2" align="center" style="padding-top: 20px;">
+                        <input type="submit" value="SUBMIT" id="submit" title="Click here to upload the data...">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <script type="text/javascript" src="javascript1.js"></script>
+    </body>
+</html>
