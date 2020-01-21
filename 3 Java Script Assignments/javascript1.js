@@ -1,5 +1,5 @@
 
-//Declaration of variables globally due to multiple use purpose
+//-------------------------Declaration of variables globally due to multiple use purpose--------------------------
 var fName=document.getElementById("firstName");
 var lName=document.getElementById("lastName");
 var eMail=document.getElementById("eMail");
@@ -9,9 +9,12 @@ var reEnterPassword=document.getElementById("reEnterPassword");
 var phone1=document.getElementById("phone1");
 var phone2=document.getElementById("phone2");
 var presentAddress=document.getElementById("presentAddress");
-var country=document.getElementById("country");
-var state=document.getElementById("state");
-var city=document.getElementById("city");
+var presentAddresspresentAddressCountry=document.getElementById("presentAddresspresentAddressCountry");
+var presentAddresspresentAddressState=document.getElementById("presentAddresspresentAddressState");
+var presentAddresspresentAddressCity=document.getElementById("presentAddresspresentAddressCity");
+var presentAddressZipCode=document.getElementById("presentAddressZipCode");
+var addressCopyCheckbox = document.getElementById("addressCopyCheckbox");
+
 var answer = document.getElementById("answer");
 
 
@@ -99,28 +102,74 @@ function validate()
         presentAddress.style.backgroundColor="rgb(243, 147, 147)";
     }
     //Country validation
-    if(country.value=="Select")
+    if(presentAddressCountry.value=="Select")
     {
-        country.focus();
+        presentAddressCountry.focus();
         count++;
-        country.style.backgroundColor="rgb(243, 147, 147)";
+        presentAddressCountry.style.backgroundColor="rgb(243, 147, 147)";
     }
     //State validation
-    if(state.value=="Select")
+    if(presentAddressState.value=="Select")
     {
-        state.focus();
+        presentAddressState.focus();
         count++;
-        state.style.backgroundColor="rgb(243, 147, 147)";
+        presentAddressState.style.backgroundColor="rgb(243, 147, 147)";
     }
     //City validation
-    if(city.value=="Select")
+    if(presentAddressCity.value=="Select")
     {
-        city.focus();
+        presentAddressCity.focus();
         count++;
-        city.style.backgroundColor="rgb(243, 147, 147)";
+        presentAddressCity.style.backgroundColor="rgb(243, 147, 147)";
+    }
+    //Zip code validation
+    if(presentAddressZipCode.value.length !== 6)
+    {
+        presentAddressZipCode.focus();
+        count++;
+        presentAddressZipCode.style.backgroundColor="rgb(243, 147, 147)";
+    }
+    // --------------------------------Validation Of permanent address ( When the checkbox is unchecked)--------------------------------
+    if(addressCopyCheckbox.checked==false)
+    {
+        //Permanent Address validation
+        if(permanentAddress.value=="")
+        {
+            permanentAddress.focus();
+            count++;
+            permanentAddress.style.backgroundColor="rgb(243, 147, 147)";
+        }
+        //Permanent Address Country validation
+        if(permanentAddressCountry.value=="Select")
+        {
+            permanentAddressCountry.focus();
+            count++;
+            permanentAddressCountry.style.backgroundColor="rgb(243, 147, 147)";
+        }
+        //Permanent Address State validation
+        if(permanentAddressState.value=="Select")
+        {
+            permanentAddressState.focus();
+            count++;
+            permanentAddressState.style.backgroundColor="rgb(243, 147, 147)";
+        }
+        //Permanent Address City validation
+        if(permanentAddressCity.value=="Select")
+        {
+            permanentAddressCity.focus();
+            count++;
+            permanentAddressCity.style.backgroundColor="rgb(243, 147, 147)";
+        }
+        //Permanent Address Zip code validation
+        if(permanentAddressZipCode.value.length !== 6)
+        {
+            permanentAddressZipCode.focus();
+            count++;
+            permanentAddressZipCode.style.backgroundColor="rgb(243, 147, 147)";
+        }
     }
 
-    //Captcha Calculation
+    //--------------------------------------------Captcha Calculation-------------------------------------------------
     var sum;
     if(symbol=="+")
     {
@@ -148,7 +197,7 @@ function validate()
     //Window alert block
     if(count > 0)
     {
-        alert("All the * marked fields should be filled properly!!!");
+        alert("All the * marked fields and the red background fields should be filled properly!!!");
         return false;
 
     }
@@ -159,7 +208,7 @@ function validate()
     }   
 }
 
-//Color Change of input fields if any error occurs
+//--------------------------------------Color Change of input fields if any error occurs-----------------------------------------------
 function colorChangeFirstName()
 {
     firstName.style.backgroundColor="rgba(255, 255, 255, 0.829)";
@@ -205,19 +254,49 @@ function colorChangePresentAddress()
     presentAddress.style.backgroundColor="rgba(255, 255, 255, 0.829)";
 }
 
-function colorChangeCountry()
+function colorChangePresentAddressCountry()
 {
-    country.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+    presentAddressCountry.style.backgroundColor="rgba(255, 255, 255, 0.829)";
 }
 
-function colorChangeState()
+function colorChangePresentAddressState()
 {
-    state.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+    presentAddressState.style.backgroundColor="rgba(255, 255, 255, 0.829)";
 }
 
-function colorChangeCity()
+function colorChangePresentAddressCity()
 {
-    city.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+    presentAddressCity.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+}
+
+function colorChangePresentAddressZipCode()
+{
+    presentAddressZipCode.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+}
+
+function colorChangePermanentAddress()
+{
+    permanentAddress.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+}
+
+function colorChangePermanentAddressCountry()
+{
+    permanentAddressCountry.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+}
+
+function colorChangePermanentAddressState()
+{
+    permanentAddressState.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+}
+
+function colorChangePermanentAddressCity()
+{
+    permanentAddressCity.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+}
+
+function colorChangePermanentAddressZipCode()
+{
+    permanentAddressZipCode.style.backgroundColor="rgba(255, 255, 255, 0.829)";
 }
 
 function colorChangeanswer()
@@ -225,7 +304,7 @@ function colorChangeanswer()
     answer.style.backgroundColor="rgba(255, 255, 255, 0.829)";
 }
 
-//Captcha function
+//----------------------------------------------Captcha function-----------------------------------------------------------------------------
 function captcha()
 {
     var randNum1 = Math.floor(Math.random() * 30) + 10;
@@ -238,8 +317,32 @@ function captcha()
     document.getElementById("symbol").innerHTML = randSymbol;
 }
 
-//Address copy(when present address is same as permanent address)
+//-------------------------------Address copy(when present address is same as permanent address)---------------------------------------------
 function addressCopy()
 {
-    document.getElementById("permanentAddress").innerHTML = presentAddress.value;
+    if(addressCopyCheckbox.checked==true)
+    {
+        document.getElementById("permanentAddress").innerHTML = presentAddress.value;
+        permanentAddressCountry.disabled=true;
+        permanentAddressState.disabled=true;
+        permanentAddress.disabled=true;
+        permanentAddressCity.disabled=true;
+        permanentAddressZipCode.disabled=true;
+
+        permanentAddress.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+        permanentAddressCountry.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+        permanentAddressState.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+        permanentAddressCity.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+        permanentAddressZipCode.style.backgroundColor="rgba(255, 255, 255, 0.829)";
+    }
+    else
+    {
+        document.getElementById("permanentAddress").innerHTML = "";
+        permanentAddressCountry.disabled=false;
+        permanentAddressState.disabled=false;
+        permanentAddress.disabled=false;
+        permanentAddressCity.disabled=false;
+        permanentAddressZipCode.disabled=false;
+
+    }
 }

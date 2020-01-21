@@ -8,12 +8,13 @@ body
 {
     margin: -5% 0% -5% 31%;
 }
-#heading  /* Page heading properties */
+.heading  /* Page heading properties */
 {
     color: #73bae4;
     font-family: sans-serif;
     font-size: 30px;
     padding-bottom: 17px;
+    text-align: center;
 }
 #table  /* Table properties */
 {
@@ -102,4 +103,12 @@ td /* Table data properties */
     content: "*";
     color: red;
     font-weight: bold;
+}
+#addressHeading
+{
+    font-size: 30px;
+    font-family: sans-serif;
+    font: bold;
+    color: #73bae4;
+    text-align: center;
 }

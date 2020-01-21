@@ -14,7 +14,7 @@
             <img id="banner" src="banner.jpg" alt="Banner Image"/>
             <table id="table">
                 <tr>
-                    <th id="heading" colspan="4">Registration Form</th>
+                    <th class="heading" colspan="4">Registration Form</th>
                 </tr>
                 <tr>
                     <td>
@@ -91,55 +91,52 @@
                         <input type="number" id="phone2" placeholder="Enter Your Mobile 2" class="mobile" onchange="colorChangePhone2()" title="It is optional to fill...Numbers are allowed only...">
                     </td>
                 </tr>
+
+                <!-- Present address -->
                 <tr>
-                    <td>
+                    <td class="heading" colspan="4" style="padding-top: 10px;">
                         <label class="requiredField">Present Address </label>
                     </td>
+                </tr>
+                <tr>
                     <td>
-                        <textarea id="presentAddress" placeholder="Enter your Present Address" class="address" onchange="colorChangePresentAddress()" title="It shouldn't be empty...Enter your full address with ZIP code..."></textarea>
+                        <p class="optionalField">Country </p>
+                        <p class="optionalField">State </p>
                     </td>
                     <td>
-                        <label class="optionalField">Permanent Address <p style="font-size: small;">( Click here <input type="checkbox" id="aadressCopyCheckbox" onclick="addressCopy()"> , if the present address<br>is same as permanent address. )</p></label>
+                        <p>
+                            <select class="input2" id="presentAddressCountry" onchange="colorChangePresentAddressCountry()" title="It should be selected with some option from the drop down box...">
+                                <option value="Select">Select</option>
+                                <option value="India">India</option>
+                                <option value="Canada">Canada</option>
+                                <option value="USA">USA</option>
+                                <option value="UK">UK</option>
+                                <option value="China">China</option>
+                            </select>
+                        </p>
+                            <select class="input2" id="presentAddressState" onchange="colorChangePresentAddressState()" title="It should be selected with some option from the drop down box...">
+                                <option value="Select">Select</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Tamil">Tamil Nadu</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Gujrat">Gujrat</option>
+                            </select>
+                        </p>
                     </td>
                     <td>
-                        <textarea id="permanentAddress" placeholder="Enter your Permanent Address" class="address" title="It is optional to fill...Enter the full address with ZIP code..."></textarea>
+                        <label class="optionalField">Address </label>
+                    </td>
+                    <td>
+                        <textarea id="presentAddress" placeholder="Enter your Present Address" class="address" onchange="colorChangePresentAddress()" title="It shouldn't be empty...Enter your full address..."></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label class="requiredField">Country </label>
+                        <label class="optionalField">City </label>
                     </td>
                     <td>
-                        <select class="input2" id="country" onchange="colorChangeCountry()" title="It should be selected with some option from the drop down box...">
-                            <option value="Select">Select</option>
-                            <option value="India">India</option>
-                            <option value="Canada">Canada</option>
-                            <option value="USA">USA</option>
-                            <option value="UK">UK</option>
-                            <option value="China">China</option>
-                        </select>
-                    </td>
-                    <td>
-                        <label class="requiredField">State </label>
-                    </td>
-                    <td>
-                        <select class="input2" id="state" onchange="colorChangeState()" title="It should be selected with some option from the drop down box...">
-                            <option value="Select">Select</option>
-                            <option value="Odisha">Odisha</option>
-                            <option value="Kerala">Kerala</option>
-                            <option value="Tamil">Tamil Nadu</option>
-                            <option value="Rajasthan">Rajasthan</option>
-                            <option value="Gujrat">Gujrat</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-
-                    <td>
-                        <label class="requiredField">City </label>
-                    </td>
-                    <td>
-                        <select class="input2" id="city" onchange="colorChangeCity()" title="It should be selected with some option from the drop down box...">
+                        <select class="input2" id="presentAddressCity" onchange="colorChangePresentAddressCity()" title="It should be selected with some option from the drop down box...">
                             <option value="Select">Select</option>
                             <option value="Bhubaneswar">Bhubaneswar</option>
                             <option value="Cuttack">Cuttack</option>
@@ -148,9 +145,82 @@
                             <option value="Kokata">Kokata</option>
                             <option value="Hyderabad">Hyderabad</option>
                         </select>
-                    </td> 
+                    </td>
                     <td>
-                        <label class="optionalField">Subscribe News Letter ?</label>
+                        <label class="optionalField">ZIP Code </label>
+                    </td>
+                    <td>
+                        <input type="number" class="input1" id="presentAddressZipCode" placeholder="Enter Your ZIP Code" onchange="colorChangePresentAddressZipCode()" title="It shouldn't be empty...Numbers are allowed only and the lenght of input should be 6 ...">
+                    </td>
+                </tr>
+
+                <!-- Permanent Address -->
+                <tr>
+                    <td class="heading" colspan="4" style="padding-top: 10px;">
+                        <label class="requiredField" >Permanent address </label>
+                        <p style="font-size: small;">( Click here <input type="checkbox" id="addressCopyCheckbox" onclick="addressCopy()"> , if the present address is same as permanent address. )</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="optionalField">Country </p>
+                        <p class="optionalField">State </p>
+                    </td>
+                    <td>
+                        <p>
+                            <select class="input2" id="permanentAddressCountry" onchange="colorChangePermanentAddressCountry()" title="It should be selected with some option from the drop down box...">
+                                <option value="Select">Select</option>
+                                <option value="India">India</option>
+                                <option value="Canada">Canada</option>
+                                <option value="USA">USA</option>
+                                <option value="UK">UK</option>
+                                <option value="China">China</option>
+                            </select>
+                        </p>
+                            <select class="input2" id="permanentAddressState" onchange="colorChangePermanentAddressState()" title="It should be selected with some option from the drop down box...">
+                                <option value="Select">Select</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Tamil">Tamil Nadu</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Gujrat">Gujrat</option>
+                            </select>
+                        </p>
+                    </td>
+                    <td>
+                        <label class="optionalField">Address </label>
+                    </td>
+                    <td>
+                        <textarea id="permanentAddress" placeholder="Enter your Permanent Address" class="address" onchange="colorChangePermanentAddress()" title="It shouldn't be empty...Enter your full address..."></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="optionalField">City </label>
+                    </td>
+                    <td>
+                        <select class="input2" id="permanentAddressCity" onchange="colorChangePermanentAddressCity()" title="It should be selected with some option from the drop down box...">
+                            <option value="Select">Select</option>
+                            <option value="Bhubaneswar">Bhubaneswar</option>
+                            <option value="Cuttack">Cuttack</option>
+                            <option value="Puri">Puri</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Kokata">Kokata</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label class="optionalField">ZIP Code </label>
+                    </td>
+                    <td>
+                        <input type="number" class="input1" id="permanentAddressZipCode" placeholder="Enter Your ZIP Code" onchange="colorChangePermanentAddressZipCode()" title="It shouldn't be empty...Numbers are allowed only and the lenght of input should be 6 ...">
+                    </td>
+                </tr>
+
+                <tr>
+                    <!-- News Letter -->
+                    <td>
+                        <label class="optionalField">News Letter ?</label>
                     </td>
                     <td>
                         <select class="input2" title="It is optional to fill...it can be selected with some option from the drop down box...">
@@ -159,9 +229,11 @@
                             <option value="No">No</option>
                         </select>
                     </td>
-                </tr>
-                <tr>
-                    <td colspan="4" style="padding-top: 10px;text-align: center;">
+                    <td>
+                        <label class="requiredField">Captcha </label>
+                    </td>
+                    <!-- Captcha -->
+                    <td style="padding-top: 10px;text-align: center;">
                         <input type="button" id="resetButton" onclick="captcha()">
                         <label id="digit1" style="font-family: sans-serif;font-size: 22px;color: white;"></label>
                         <label id="symbol" style="font-family: sans-serif;font-size: 22px;color: white;"></label>
@@ -172,6 +244,7 @@
                     </td>
                 </tr>
                 <tr>
+                    <!-- Submit Button -->
                     <td colspan="4" style="padding-top: 20px;text-align: center;">
                         <input type="submit" value="SUBMIT" id="submit" title="Click here to upload the data...">
                     </td>
