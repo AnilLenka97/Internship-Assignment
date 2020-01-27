@@ -2,12 +2,12 @@
 function submit()
 {
     flag=0;
+    passwordCheck();
     captchaValidation();
     firstNameCheck();
     lastNameCheck();
     eMailCheck();
     genderCheck();
-    passwordCheck();
     reEnterPasswordCheck();
     phone1Check();
     phone2Check();
