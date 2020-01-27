@@ -1,4 +1,3 @@
-
 var flag;
 $(document).ready(function(){
 

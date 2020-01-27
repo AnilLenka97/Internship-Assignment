@@ -1,4 +1,3 @@
-
 function firstNameCheck() {
     var fName = $("#firstName");
     nameValidation(fName);
