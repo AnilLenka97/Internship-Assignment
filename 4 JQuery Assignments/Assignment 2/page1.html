@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JQuery Assignment 2</title>
+        <link rel="stylesheet" type="text/css" href="Styles/stylesheet.css">
+        <meta name="description" content=" Employee Registration form using HTML, CSS and JQuery">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form id="form">
+            <div id="employeeRegForm">
+                <h1 id="heading">Employee Registration Form</h1>
+                <div id="totalArea">
+                    <div id="personalDetails">
+                        <h2>Personal Deatails</h2>
+        
+                        <div id="personalDetailsPart1">
+                            <label for="firstName" class="requiredField">First Name</label>
+                            <input type="text" id="firstName" class="textFieldInput" autocomplete="off">
+                            <label for="firstName" id="firstNameErrorMsg" class="error-message"></label>
+                            
+                            <label for="lastName" class="requiredField">Last Name</label>
+                            <input type="text" id="lastName" class="textFieldInput" autocomplete="off">
+                            <label for="lastName" id="lastNameErrorMsg" class="error-message"></label>
+                            
+                            <label for="eMail" class="requiredField">E-Mail Address</label>
+                            <input type="text" id="eMail" class="textFieldInput" autocomplete="off">
+                            <label for="eMail" id="eMailErrorMsg" class="error-message"></label>
+                            
+                            <label for="panNum" class="requiredField">PAN Number</label>
+                            <input type="text" id="panNum" class="textFieldInput" autocomplete="off">
+                            <label for="panNum" id="panErrorMsg" class="error-message"></label>
+
+                            <label for="aadhaarNum" class="requiredField">Aadhaar Number </label>
+                            <input type="text" id="aadhaarNum" class="textFieldInput" autocomplete="off">
+                            <label for="aadhaarNum" id="aadhaarErrorMsg" class="error-message"></label>
+
+                        </div>
+                        <div id="personalDetailsPart2">
+        
+                            <div id="dropZoneDiv" class="upload-image-preview">
+                                <input type="file" class="dropZone">
+                            </div>
+                            <br>
+                            <label for="gender" class="requiredField">Gender </label>
+                            <span id="radioInput">
+                                <label><input type="radio" name="gender" value="Male">Male</label>
+                                <label><input type="radio" name="gender" value="Female">Female</label>
+                                <label><input type="radio" name="gender" value="Other">Others</label>
+                            </span>
+                            <label for="radioInput" id="genderErrorMsg" class="error-message">**Please select your gender</label>
+        
+                            <label for="phoneNum" class="requiredField">Phone Number</label>
+                            <div id="phoneNumAreaDiv">
+                                <div id="phoneNumDiv">
+                                    <select id="phoneCode" class="phoneCode">
+                                        <option value="+91">+91</option>
+                                        <option value="+91">+92</option>
+                                        <option value="+91">+93</option>
+                                        <option value="+91">+94</option>
+                                        <option value="+91">+95</option>
+                                    </select>
+                                    <input type="text" id="phoneNum" class="phoneNumInput" autocomplete="off">
+                                    <button type="button" id="phoneNumAddButton">+</button>
+                                </div>
+                                <label for="phoneNum" id="phoneNumErrorMsg" class="error-message"></label>
+                            </div>
+                        </div>
+        
+                    </div>
+        
+                    <div id="addressBook">
+        
+                        <div id="addressField" class="addressField">
+                            <h2>Address Field</h2>
+                            <div id="addressFieldPart1" class="addressFieldPart1">
+        
+                                <label for="country" class="requiredField">Country </label>
+                                <select name="" id="country" class="dropDownInput">
+                                    <option value="Select">Select</option>
+                                    <option value="India">India</option>
+                                    <option value="Pakistan">Pakistan</option>
+                                    <option value="China">China</option>
+                                    <option value="Nepal">Nepal</option>
+                                    <option value="Bhutan">Bhutan</option>
+                                    <option value="SriLanka">SriLanka</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Afghanistan">Afghanistan</option>
+                                </select>
+                                <label for="country" id="countryErrorMsg" class="error-message"></label>
+
+                                <label for="state" class="requiredField">State </label>
+                                <select name="" id="state" class="dropDownInput">
+                                </select>
+                                <label for="state" id="stateErrorMsg" class="error-message"></label>
+
+                                <label for="city" class="requiredField">City </label>
+                                <input type="text" id="city" class="textFieldInput">
+                                <label for="city" id="cityErrorMsg" class="error-message"></label>
+                            </div>
+        
+                            <div id="addressFieldPart2" class="addressFieldPart2">
+                                <label for="address" class="requiredField">Address</label>
+                                <textarea id="textArea" class="addressArea"></textarea>
+
+                                <label for="pinCode" class="requiredField">PIN Code </label>
+                                <input type="text" id="pinCode" class="textFieldInput" autocomplete="off">
+                                <label for="pinCode" id="pinCodeErrorMsg" class="error-message"></label>
+                            </div>
+        
+                            <div id="addressFieldPart3"><button type="button" id="addressAddButton">+</button></div>
+        
+                        </div>
+                    </div>
+        
+                    <div id="capchaAndSubmitPart1">
+                        <input type="button" id="resetCaptcha">
+                        <label id="digit1" class="captchaValue"></label>
+                        <label id="symbol" class="captchaValue"></label>
+                        <label id="digit2" class="captchaValue"></label>
+                        <span class="captchaValue">=</span>
+                        <input type="text" autocomplete="off" id="answer">
+                    </div>
+                    <div id="capchaAndSubmitPart2">
+                        <button type="button" id="resetForm">Reset</button>
+                        <button type="button" id="submitForm">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="employeeDetails">
+                <h1 id="heading">Employee Details</h1>
+                <div id="afterSubmit">
+                    <div id="profileImage" class="upload-image-preview2"></div>
+                    <div id="afterSubmitArea">
+                        <p id="name"><label id="firstNameShow"></label><label id="lastNameShow"></label></p>
+                        <div id="personalDetailsShow">
+                            <h2>Personal Details</h2>
+                            <p><label class="output-label">Email : </label><label id="eMailShow" class="output-field"></label></p>
+                            <p><label class="output-label">Gender : </label><label id="genderShow" class="output-field"></label></p>
+                            <p><label class="output-label">PAN Number : </label><label id="panNumShow" class="output-field"></label></p>
+                            <p><label class="output-label">Aadhaar Number : </label><label id="aadhaarNumShow" class="output-field"></label></p>
+                            <p id="phoneNumAttach"><label class="output-label">Phone Number : </label><label id="phoneCodeShow" class="output-field"></label><label id="phoneNumShow" class="output-field"></label></p>
+                        </div>
+                        <div id="addressShow">
+                            <h2>Address</h2>
+                            <p id="textAreaShow" class="output-field"></p>
+                            <p><label class="output-label">City : </label><label id="cityShow" class="output-field"></label></p>
+                            <p><label class="output-label">State : </label><label id="stateShow" class="output-field"></label></p>
+                            <p><label class="output-label">Country : </label><label id="countryShow" class="output-field"></label></p>
+                            <p><label class="output-label">PIN Code : </label><label id="pinCodeShow" class="output-field"></label></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </form>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="Scripts/jQuery.js"></script>
+    </body>
+</html>

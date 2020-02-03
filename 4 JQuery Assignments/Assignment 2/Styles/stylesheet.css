@@ -1,0 +1,274 @@
+body {
+    background-color: #0c2029;
+}
+h1 {
+    text-align: center;
+    color: #5d9c80;
+}
+h2{
+    text-align: center;
+    color: #062b31;
+}
+#totalArea {
+    background-color: #90d2a3;
+    overflow: hidden;
+}
+#personalDetails {
+    background-color: #67674b40;
+}
+#addressBook {
+    clear: left;
+}
+#personalDetails, #addressField, .addressDynamic {
+    overflow: hidden;
+    margin: 3% 10% 2% 10%;
+    padding: 1% 3% 3% 3%;
+    border-radius: 10px;
+}
+.addressField {
+    background-color: #67674b40;
+    overflow: hidden;
+    border-radius: 7px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border:none;
+}
+#personalDetailsPart1 , .addressFieldPart1 {
+    float: left;
+    margin: 0% 0% 0% 15%;
+}
+#personalDetailsPart2 {
+    float: left;
+    margin: 2% 0% 0% 15%;
+}
+.requiredField, .phoneNumDynamic {
+    font-family: sans-serif;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+.addressDynamic {
+    background-color: #67674b40;
+    border-radius: 7px;
+    overflow: hidden;
+    border: none;
+    margin-top: 2%;
+    padding-bottom: 2%;
+}
+.textFieldInput, #radioInput, .dropDownInput, .textFieldCity, .textFieldPinCode {
+    width: 250px;
+    height: 26px;
+    border-radius: 7px;
+    border: 1px solid #062b31;
+    background-color: transparent;
+    padding: 5px;
+    margin: 10px 10px 10px 0px;
+}
+.phoneNumInput {
+    width: 189px;
+    height: 26px;
+    border-radius: 7px;
+    border: 1px solid #062b31;
+    background-color: transparent;
+    padding: 5px;
+    margin: 10px 10px 10px 0px;
+}
+.phoneCode, .dynamicPhoneCode {
+    width: 58px;
+    height: 37px;
+    border-radius: 7px;
+    border: 1px solid #062b31;
+    background-color: transparent;
+    padding: 5px;
+    margin: 10px 0px 10px 0px;
+}
+.dynamicPhoneNumInput {
+    width: 189px;
+    height: 26px;
+    border-radius: 7px;
+    border: 1px solid #062b31;
+    background-color: transparent;
+    padding: 5px;
+    margin: 10px 10px 10px 4px;
+}
+.dropDownInput {
+    width: 260px;
+    height: 40px;
+}
+.textFieldInput, #radioInput, .dropDownInput , .textFieldCity, .textFieldPinCode, .phoneNumDynamic {
+    display: block;
+}
+.textFieldInput:hover,.dropDownInput:hover,#answer:hover,.phoneNumInput:hover,.addressArea:hover,.textFieldCity:hover,.textFieldPinCode:hover {
+    background-color: #a6ccab;
+}
+.phoneNumDynamic {
+    margin-bottom: -10px;
+    margin-left: 7px;
+}
+.addressFieldPart2 {
+    float: left;
+    padding: 0% 0% 0% 15%;
+}
+.addressFieldPart3 {
+    float: left;
+}
+#captchaAndSubmit {
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 2% 10% 0% 10%;
+    padding: 1% 1% 1% 1%;
+}
+#capchaAndSubmitPart1 {
+    text-align: center;
+}
+#capchaAndSubmitPart2 {
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 8px;
+}
+.captchaValue {
+    font-family: sans-serif;
+    font-size: 18px;
+    color: rgb(14, 113, 143);
+}
+#answer {
+    width: 35px;
+    height: 30px;
+    font-size: 17px;
+    border-radius: 4px;
+    border: 1px solid #336ce7;
+    padding: 0px;
+    background-color: transparent;
+}
+#submitForm, #resetForm /* Submit button properties */
+{
+    color: white;
+    font-family: sans-serif;
+    font-size: 22px;
+    border-radius: 22px;
+    background-color: #77698ec7;
+    width: 220px;
+    height: 44px;
+    border: none;
+    margin: 4px;
+}
+#submitForm:hover,#resetForm:hover,#phoneNumAddButton:hover,#addressAddButton:hover,.remove-field:hover {
+    background-color: #0d4b58;
+    color: white;
+}
+
+#resetCaptcha /* Reset button properties */
+{
+    background-image:url('../Images/refresh_image.jpg') ;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border: 1px solid #336ce7;
+    height: 20px;
+    width: 20px;
+}
+
+#phoneNumAddButton {
+    border-radius: 50%;
+    background-color: #664b8c54;
+    color: black;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: large;
+}
+.remove-field,#addressAddButton  {
+    background-color: #664b8c54;
+    color: black;
+    border-radius: 50%;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: large;
+}
+#dropZoneDiv {
+    border: 1px solid #062b31;
+    height: 197px;
+    width: 160px;
+    background-image: url('../Images/upload_img_background.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-left: 17%;
+    border-radius: 2%;
+}
+
+.addressArea {
+    width: 249px;
+    height: 109px;
+    display: block;
+    background-color: transparent;
+    border: 1px solid #085648;
+    padding: 5px;
+    margin: 10px 10px 10px 0px;
+    border-radius: 7px;
+}
+.error-message {
+    display: block;
+    color: #a91c30;
+    margin-left: 10px;
+}
+.addressHeading
+{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 18px;
+    margin-top: 20px;
+}
+.error-border-color {
+    border: 2px solid red;
+}
+.corrected-border-color {
+    border: 2px solid blue;
+}
+
+/* for image class */
+.upload-image-preview img{
+    width: 100%;
+    height: 100%;
+    border-radius: 2%;
+}
+.upload-image-preview2 img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.dropZone{
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* After Submit */
+#profileImage {
+    border: 1px solid #062b31;
+    height: 20%;
+    width: 20%;
+    margin: 0% 40% -10% 40%;
+    border-radius: 50%;
+}
+#afterSubmitArea {
+    background-color: #d4b494;
+    overflow: hidden;
+    margin: 0% 10% 0% 10%;
+    border-radius: 10px;
+    padding: 10% 10% 0% 10%;
+}
+#afterSubmit {
+    overflow: hidden;
+}
+#name {
+    font-size: 50px;
+    font-family: sans-serif;
+    text-align: center;
+}
+.output-field, .output-label {
+    font-size: 20px;
+    font-family: sans-serif;
+}
+#afterSubmit {
+    background-color: #183340;
+}
