@@ -307,9 +307,16 @@ function captcha()
     var randNum2 = Math.floor(Math.random() * 40) + 10;
     var rawSymbol="+-*/";
     var randSymbol=rawSymbol[Math.floor(Math.random() * rawSymbol.length)];
-
-    $("#digit1").html(randNum1);
-    $("#digit2").html(randNum2);
+    if(randNum1 < randNum2)
+    {
+        $("#digit2").html(randNum1);
+        $("#digit1").html(randNum2);
+    }
+    else
+    {
+        $("#digit1").html(randNum1);
+        $("#digit2").html(randNum2);
+    }
     $("#symbol").html(randSymbol);
     $('#answer').val('');
 }
