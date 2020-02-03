@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('.error-message').hide();
     $('#employeeDetails').hide();
-
+    $('#imageResetButton').hide();
     captcha();
 
     $('#answer').keyup(function(){
@@ -90,6 +90,13 @@ $(document).ready(function(){
        readFile(this);
     });
 
+    $("#imageResetButton").click(function(){
+        $('.upload-image-preview').hide();
+        $(this).hide();
+        $('.dropZone').val('');
+        $('.dropZone').show();
+    });
+
     
 });
 
@@ -119,9 +126,9 @@ function readFile(passVal)
         };
         reader.readAsDataURL(passVal.files[0]);
     }
-
     $('.dropZone').hide();
     $('.upload-image-preview').show();
+    $('#imageResetButton').show();
 }
 
 
@@ -595,6 +602,7 @@ function reset()
 {
     $('form')[0].reset();
     $('.upload-image-preview').hide();
+    $('#imageResetButton').hide();
     $('.dropZone').show();
 }
 //Submit Button Click Function

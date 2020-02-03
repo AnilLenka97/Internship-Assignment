@@ -272,3 +272,14 @@ h2{
 #afterSubmit {
     background-color: #183340;
 }
+#imageResetButton {
+    height: 24px;
+    width: 160px;
+    border: none;
+    background-color: #0c2029;
+    font-family: sans-serif;
+    font-size: 17px;
+    color: #d4b494;
+    margin-top: -24px;
+    position: absolute;
+}
