@@ -94,7 +94,7 @@ h2{
     width: 260px;
     height: 40px;
 }
-.textFieldInput, #radioInput, .dropDownInput , .textFieldCity, .textFieldPinCode, .phoneNumDynamic {
+.textFieldInput, #radioInput, .dropDownInput , .textFieldCity, .textFieldPinCode, .phoneNumDynamic, #dropZoneDiv {
     display: block;
 }
 .textFieldInput:hover,.dropDownInput:hover,#answer:hover,.phoneNumInput:hover,.addressArea:hover,.textFieldCity:hover,.textFieldPinCode:hover {
@@ -191,7 +191,7 @@ h2{
     background-image: url('../Images/upload_img_background.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
-    margin-left: 17%;
+    margin: 0% 0% 6% 17% ;
     border-radius: 2%;
 }
 
@@ -225,7 +225,7 @@ h2{
 }
 
 /* for image class */
-.upload-image-preview img{
+.upload-image-preview, .upload-image-preview img{
     width: 100%;
     height: 100%;
     border-radius: 2%;

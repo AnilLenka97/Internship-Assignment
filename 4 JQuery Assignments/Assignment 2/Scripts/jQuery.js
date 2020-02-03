@@ -95,6 +95,7 @@ $(document).ready(function(){
 
 var flag=0;
 var photoflag = 0;
+// for upload image file
 function readFile(passVal)
 {
     if (passVal.files && passVal.files[0]) {
@@ -118,12 +119,16 @@ function readFile(passVal)
         };
         reader.readAsDataURL(passVal.files[0]);
     }
+
+    $('.dropZone').hide();
+    $('.upload-image-preview').show();
 }
 
 
 var wrapper1 = $('#phoneNumAreaDiv');
 var wrapper2 = $('#phoneNumAttach');
 var counter = 5000;
+// Adding new dynamic number field
 function addNewNumberField() {
     event.preventDefault();
     counter += 1;
@@ -174,6 +179,7 @@ function addNewNumberField() {
 var wrapperAddress = $('#addressBook');
 var wrapperAddressShow = $('#addressShow');
 var counterAddress = 5000;
+// Adding new Dynamic Address Field
 function addNewAddressField()
 {
     event.preventDefault();
@@ -300,7 +306,7 @@ function countryValidation(country,state)
 
 }
 
-
+// for captcha generation
 function captcha()
 {
     var randNum1 = Math.floor(Math.random() * 30) + 10;
@@ -320,6 +326,7 @@ function captcha()
     $("#symbol").html(randSymbol);
     $('#answer').val('');
 }
+// captcha Validation
 function captchaValidation() {
     var digit1 = parseInt($("#digit1").html());
     var digit2 = parseInt($("#digit2").html());
@@ -587,6 +594,8 @@ function textAreaOutput(passVal,output)
 function reset()
 {
     $('form')[0].reset();
+    $('.upload-image-preview').hide();
+    $('.dropZone').show();
 }
 //Submit Button Click Function
 function submit()
