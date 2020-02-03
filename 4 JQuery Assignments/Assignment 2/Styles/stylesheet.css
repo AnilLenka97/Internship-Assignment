@@ -283,3 +283,7 @@ h2{
     margin-top: -24px;
     position: absolute;
 }
+#imageResetButton:hover {
+    background-color: #0d4b58;
+    color: white;
+}

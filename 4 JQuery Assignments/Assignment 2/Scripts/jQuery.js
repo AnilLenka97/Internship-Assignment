@@ -86,18 +86,44 @@ $(document).ready(function(){
         reset();
     });
 
-    $(".dropZone").change(function () {
-       readFile(this);
-    });
-
     $("#imageResetButton").click(function(){
         $('.upload-image-preview').hide();
         $(this).hide();
         $('.dropZone').val('');
         $('.dropZone').show();
     });
-
-    
+    // for comntrolling browsers default behaviour
+    var dropZoneId =$(".dropZone").attr('id');
+    window.addEventListener("dragenter", function(e) {
+        console.log(e.target.id);
+        
+        if (e.target.id != dropZoneId) {            
+          e.preventDefault();
+          e.dataTransfer.effectAllowed = "none";
+          e.dataTransfer.dropEffect = "none";
+        }
+    }, false);
+      
+    window.addEventListener("dragover", function(e) {
+        console.log(e.target.id);
+        if(e.target.id != dropZoneId) {
+          e.preventDefault();
+          e.dataTransfer.effectAllowed = "none";
+          e.dataTransfer.dropEffect = "none";
+        }
+    });
+      
+    window.addEventListener("drop", function(e){
+        if (e.target.id != dropZoneId) {
+          e.preventDefault();
+          e.dataTransfer.effectAllowed = "none";
+          e.dataTransfer.dropEffect = "none";
+        }
+    });
+      
+    $(".dropZone").change(function () {
+        readFile(this);
+    });
 });
 
 var flag=0;
