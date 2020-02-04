@@ -461,8 +461,9 @@ function validateName(passVal,msg,output,space) {
 // E-mail validation Function
 function validateEmail(passVal,msg,output)
 {
+    var value = passVal.val().trim();
     var checkEmailRegx = /^[a-zA-Z0-9.]+@+[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
-    if(passVal.val().trim().length === 0)
+    if(value.length === 0)
     {
         passVal.removeClass('corrected-border-color').addClass('error-border-color');
         passVal.focus();
@@ -470,7 +471,7 @@ function validateEmail(passVal,msg,output)
         msg.show();
         flag = 1;
     }
-    else if(!(checkEmailRegx.test(passVal.val()))  )
+    else if(!(checkEmailRegx.test(value))  )
     {
         passVal.focus();
         passVal.removeClass('corrected-border-color').addClass('error-border-color');
@@ -482,7 +483,7 @@ function validateEmail(passVal,msg,output)
     {
         passVal.removeClass('error-border-color').addClass('corrected-border-color');
         msg.hide();
-        output.text(passVal.val().trim());
+        output.text(value);
 
     }
 }
@@ -490,7 +491,8 @@ function validateEmail(passVal,msg,output)
 //PAN Validation
 function validatePanNum(passVal,msg,output)
 {
-    if(passVal.val().trim().length === 0)
+    var value = passVal.val().trim()
+    if(value.length === 0)
     {
         passVal.removeClass('corrected-border-color').addClass('error-border-color');
         passVal.focus();
@@ -498,7 +500,7 @@ function validatePanNum(passVal,msg,output)
         msg.show();
         flag = 1;
     }
-    else if(!/^[A-Z]{5}\d{4}[A-Z]{1}$/.test(passVal.val()))
+    else if(!/^[A-Z]{5}\d{4}[A-Z]{1}$/.test(value))
     {
         passVal.removeClass('corrected-border-color').addClass('error-border-color');
         msg.text('**Error...Enter a valid PAN Number');
