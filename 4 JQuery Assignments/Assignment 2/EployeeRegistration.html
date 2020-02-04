@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JQuery Assignment 2</title>
-        <link rel="stylesheet" type="text/css" href="Styles/stylesheet.css">
+        <title>Employee Registration Form</title>
+        <link rel="stylesheet" type="text/css" href="Styles/employee-registration.css">
         <meta name="description" content=" Employee Registration form using HTML, CSS and JQuery">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -15,35 +15,35 @@
                         <h2>Personal Deatails</h2>
         
                         <div id="personalDetailsPart1">
-                            <label for="firstName" class="requiredField">First Name</label>
-                            <input type="text" id="firstName" class="textFieldInput" autocomplete="off">
+                            <label for="firstName" class="label-field">First Name</label>
+                            <input type="text" id="firstName" class="text-field-input" autocomplete="off">
                             <label for="firstName" id="firstNameErrorMsg" class="error-message"></label>
                             
-                            <label for="lastName" class="requiredField">Last Name</label>
-                            <input type="text" id="lastName" class="textFieldInput" autocomplete="off">
+                            <label for="lastName" class="label-field">Last Name</label>
+                            <input type="text" id="lastName" class="text-field-input" autocomplete="off">
                             <label for="lastName" id="lastNameErrorMsg" class="error-message"></label>
                             
-                            <label for="eMail" class="requiredField">E-Mail Address</label>
-                            <input type="text" id="eMail" class="textFieldInput" autocomplete="off">
+                            <label for="eMail" class="label-field">E-Mail Address</label>
+                            <input type="text" id="eMail" class="text-field-input" autocomplete="off">
                             <label for="eMail" id="eMailErrorMsg" class="error-message"></label>
                             
-                            <label for="panNum" class="requiredField">PAN Number</label>
-                            <input type="text" id="panNum" class="textFieldInput" autocomplete="off">
+                            <label for="panNum" class="label-field">PAN Number</label>
+                            <input type="text" id="panNum" class="text-field-input" autocomplete="off">
                             <label for="panNum" id="panErrorMsg" class="error-message"></label>
 
-                            <label for="aadhaarNum" class="requiredField">Aadhaar Number </label>
-                            <input type="text" id="aadhaarNum" class="textFieldInput" autocomplete="off">
+                            <label for="aadhaarNum" class="label-field">Aadhaar Number </label>
+                            <input type="text" id="aadhaarNum" class="text-field-input" autocomplete="off">
                             <label for="aadhaarNum" id="aadhaarErrorMsg" class="error-message"></label>
 
                         </div>
                         <div id="personalDetailsPart2">
         
                             <div id="dropZoneDiv">
-                                <input type="file" id="inputImage"class="dropZone">
+                                <input type="file" id="inputImage"class="drop-zone">
                                 <div class="upload-image-preview"></div>
                                 <input type="button" id="imageResetButton" value="Reset Image">
                             </div>
-                            <label for="gender" class="requiredField">Gender </label>
+                            <label for="gender" class="label-field">Gender </label>
                             <span id="radioInput">
                                 <label><input type="radio" name="gender" value="Male">Male</label>
                                 <label><input type="radio" name="gender" value="Female">Female</label>
@@ -51,7 +51,7 @@
                             </span>
                             <label for="radioInput" id="genderErrorMsg" class="error-message">**Please select your gender</label>
         
-                            <label for="phoneNum" class="requiredField">Phone Number</label>
+                            <label for="phoneNum" class="label-field">Phone Number</label>
                             <div id="phoneNumAreaDiv">
                                 <div id="phoneNumDiv">
                                     <select id="phoneCode" class="phoneCode">
@@ -72,12 +72,12 @@
         
                     <div id="addressBook">
         
-                        <div id="addressField" class="addressField">
+                        <div id="addressField" class="address-field">
                             <h2>Address Field</h2>
-                            <div id="addressFieldPart1" class="addressFieldPart1">
+                            <div id="addressFieldPart1" class="address-field-part1">
         
-                                <label for="country" class="requiredField">Country </label>
-                                <select name="" id="country" class="dropDownInput">
+                                <label for="country" class="label-field">Country </label>
+                                <select name="" id="country" class="drop-down-input">
                                     <option value="Select">Select</option>
                                     <option value="India">India</option>
                                     <option value="Pakistan">Pakistan</option>
@@ -90,22 +90,22 @@
                                 </select>
                                 <label for="country" id="countryErrorMsg" class="error-message"></label>
 
-                                <label for="state" class="requiredField">State </label>
-                                <select name="" id="state" class="dropDownInput">
+                                <label for="state" class="label-field">State </label>
+                                <select name="" id="state" class="drop-down-input">
                                 </select>
                                 <label for="state" id="stateErrorMsg" class="error-message"></label>
 
-                                <label for="city" class="requiredField">City </label>
-                                <input type="text" id="city" class="textFieldInput">
+                                <label for="city" class="label-field">City </label>
+                                <input type="text" id="city" class="text-field-input">
                                 <label for="city" id="cityErrorMsg" class="error-message"></label>
                             </div>
         
-                            <div id="addressFieldPart2" class="addressFieldPart2">
-                                <label for="address" class="requiredField">Address</label>
-                                <textarea id="textArea" class="addressArea"></textarea>
+                            <div id="addressFieldPart2" class="address-field-part2">
+                                <label for="address" class="label-field">Address</label>
+                                <textarea id="textArea" class="address-area"></textarea>
 
-                                <label for="pinCode" class="requiredField">PIN Code </label>
-                                <input type="text" id="pinCode" class="textFieldInput" autocomplete="off">
+                                <label for="pinCode" class="label-field">PIN Code </label>
+                                <input type="text" id="pinCode" class="text-field-input" autocomplete="off">
                                 <label for="pinCode" id="pinCodeErrorMsg" class="error-message"></label>
                             </div>
         
@@ -158,6 +158,6 @@
 
         </form>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script type="text/javascript" src="Scripts/jQuery.js"></script>
+        <script type="text/javascript" src="Scripts/employeeRegistration.js"></script>
     </body>
 </html>

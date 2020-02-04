@@ -19,13 +19,13 @@ h2{
 #addressBook {
     clear: left;
 }
-#personalDetails, #addressField, .addressDynamic {
+#personalDetails, .address-field, .dynamic-address {
     overflow: hidden;
     margin: 3% 10% 2% 10%;
     padding: 1% 3% 3% 3%;
     border-radius: 10px;
 }
-.addressField {
+.address-field {
     background-color: #67674b40;
     overflow: hidden;
     border-radius: 7px;
@@ -33,7 +33,7 @@ h2{
     padding-bottom: 2%;
     border:none;
 }
-#personalDetailsPart1 , .addressFieldPart1 {
+#personalDetailsPart1 , .address-field-part1 {
     float: left;
     margin: 0% 0% 0% 15%;
 }
@@ -41,12 +41,12 @@ h2{
     float: left;
     margin: 2% 0% 0% 15%;
 }
-.requiredField, .phoneNumDynamic {
+.label-field, .phoneNumDynamic {
     font-family: sans-serif;
     font-size: 18px;
     padding-bottom: 10px;
 }
-.addressDynamic {
+.dynamic-address {
     background-color: #67674b40;
     border-radius: 7px;
     overflow: hidden;
@@ -54,7 +54,7 @@ h2{
     margin-top: 2%;
     padding-bottom: 2%;
 }
-.textFieldInput, #radioInput, .dropDownInput, .textFieldCity, .textFieldPinCode {
+.text-field-input, #radioInput, .drop-down-input, .text-field-city {
     width: 250px;
     height: 26px;
     border-radius: 7px;
@@ -72,7 +72,7 @@ h2{
     padding: 5px;
     margin: 10px 10px 10px 0px;
 }
-.phoneCode, .dynamicPhoneCode {
+.phoneCode, .dynamic-phone-code {
     width: 58px;
     height: 37px;
     border-radius: 7px;
@@ -90,21 +90,21 @@ h2{
     padding: 5px;
     margin: 10px 10px 10px 4px;
 }
-.dropDownInput {
+.drop-down-input {
     width: 260px;
     height: 40px;
 }
-.textFieldInput, #radioInput, .dropDownInput , .textFieldCity, .textFieldPinCode, .phoneNumDynamic, #dropZoneDiv {
+.text-field-input, #radioInput, .drop-down-input , .text-field-city, .phoneNumDynamic, #dropZoneDiv {
     display: block;
 }
-.textFieldInput:hover,.dropDownInput:hover,#answer:hover,.phoneNumInput:hover,.addressArea:hover,.textFieldCity:hover,.textFieldPinCode:hover {
+.text-field-input:hover,.drop-down-input:hover,#answer:hover,.phoneNumInput:hover,.address-area:hover,.text-field-city:hover {
     background-color: #a6ccab;
 }
 .phoneNumDynamic {
     margin-bottom: -10px;
     margin-left: 7px;
 }
-.addressFieldPart2 {
+.address-field-part2 {
     float: left;
     padding: 0% 0% 0% 15%;
 }
@@ -195,7 +195,7 @@ h2{
     border-radius: 2%;
 }
 
-.addressArea {
+.address-area {
     width: 249px;
     height: 109px;
     display: block;
@@ -223,8 +223,6 @@ h2{
 .corrected-border-color {
     border: 2px solid blue;
 }
-
-/* for image class */
 .upload-image-preview, .upload-image-preview img{
     width: 100%;
     height: 100%;
@@ -235,14 +233,12 @@ h2{
     height: 100%;
     border-radius: 50%;
 }
-.dropZone{
+.drop-zone{
     opacity: 0;
     height: 100%;
     width: 100%;
     cursor: pointer;
 }
-
-/* After Submit */
 #profileImage {
     border: 1px solid #062b31;
     height: 20%;
