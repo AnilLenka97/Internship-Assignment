@@ -1,5 +1,6 @@
 var flag;
 var photoflag = 0;
+var dropZoneId =$(".drop-zone").attr('id');
 var wrapper1 = $('#phoneNumAreaDiv');
 var wrapper2 = $('#phoneNumAttach');
 var counter = 1000;
@@ -114,10 +115,7 @@ $(document).ready(function(){
     });
 
     // for comntrolling browsers default behaviour while drag and drop
-    var dropZoneId =$(".drop-zone").attr('id');
     window.addEventListener("dragenter", function(e) {
-        console.log(e.target.id);
-        
         if (e.target.id != dropZoneId) {            
           e.preventDefault();
           e.dataTransfer.effectAllowed = "none";
@@ -126,7 +124,6 @@ $(document).ready(function(){
     }, false);
       
     window.addEventListener("dragover", function(e) {
-        console.log(e.target.id);
         if(e.target.id != dropZoneId) {
           e.preventDefault();
           e.dataTransfer.effectAllowed = "none";
