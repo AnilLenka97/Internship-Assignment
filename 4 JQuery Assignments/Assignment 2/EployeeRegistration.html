@@ -38,13 +38,14 @@
                         </div>
                         <div id="personalDetailsPart2">
         
-                            <div id="dropZoneDiv">
+                            <div id="dropZoneDiv" class="dropZoneDiv">
                                 <input type="file" id="inputImage"class="drop-zone">
+                                <label for="inputImage" id="inputImageErrorMsg" class="error-message">**Error..Invalid File</label>
                                 <div class="upload-image-preview"></div>
                                 <input type="button" id="imageResetButton" value="Reset Image">
                             </div>
                             <label for="gender" class="label-field">Gender </label>
-                            <span id="radioInput">
+                            <span id="radioInput" class="radioInput">
                                 <label><input type="radio" name="gender" value="Male">Male</label>
                                 <label><input type="radio" name="gender" value="Female">Female</label>
                                 <label><input type="radio" name="gender" value="Other">Others</label>
@@ -103,7 +104,7 @@
                             <div id="addressFieldPart2" class="address-field-part2">
                                 <label for="address" class="label-field">Address</label>
                                 <textarea id="textArea" class="address-area"></textarea>
-
+                                <label for="textArea" id="textAreaErrorMsg" class="error-message">**It shouldn't be empty!!!</label>
                                 <label for="pinCode" class="label-field">PIN Code </label>
                                 <input type="text" id="pinCode" class="text-field-input" autocomplete="off">
                                 <label for="pinCode" id="pinCodeErrorMsg" class="error-message"></label>
@@ -120,7 +121,7 @@
                         <label id="symbol" class="captchaValue"></label>
                         <label id="digit2" class="captchaValue"></label>
                         <span class="captchaValue">=</span>
-                        <input type="text" autocomplete="off" id="answer">
+                        <input type="text" autocomplete="off" id="answer" class="answer">
                     </div>
                     <div id="capchaAndSubmitPart2">
                         <button type="button" id="resetForm">Reset</button>

@@ -46,6 +46,11 @@ h2{
     font-size: 18px;
     padding-bottom: 10px;
 }
+.label-field::before {
+    content: "*";
+    color: red;
+    font-size: 18px;
+}
 .dynamic-address {
     background-color: #67674b40;
     border-radius: 7px;
@@ -54,7 +59,7 @@ h2{
     margin-top: 2%;
     padding-bottom: 2%;
 }
-.text-field-input, #radioInput, .drop-down-input, .text-field-city {
+.text-field-input, .radioInput, .drop-down-input, .text-field-city {
     width: 250px;
     height: 26px;
     border-radius: 7px;
@@ -94,10 +99,10 @@ h2{
     width: 260px;
     height: 40px;
 }
-.text-field-input, #radioInput, .drop-down-input , .text-field-city, .phoneNumDynamic, #dropZoneDiv {
+.text-field-input, .radioInput, .drop-down-input , .text-field-city, .phoneNumDynamic, .dropZoneDiv {
     display: block;
 }
-.text-field-input:hover,.drop-down-input:hover,#answer:hover,.phoneNumInput:hover,.address-area:hover,.text-field-city:hover {
+.text-field-input:hover,.drop-down-input:hover,.answer:hover,.phoneNumInput:hover,.address-area:hover,.text-field-city:hover {
     background-color: #a6ccab;
 }
 .phoneNumDynamic {
@@ -130,13 +135,12 @@ h2{
     font-size: 18px;
     color: rgb(14, 113, 143);
 }
-#answer {
+.answer {
     width: 35px;
     height: 30px;
     font-size: 17px;
-    border-radius: 4px;
-    border: 1px solid #336ce7;
-    padding: 0px;
+    border-radius: 7px;
+    border: 1px solid #062b31;
     background-color: transparent;
 }
 #submitForm, #resetForm /* Submit button properties */
@@ -150,6 +154,7 @@ h2{
     height: 44px;
     border: none;
     margin: 4px;
+    cursor: pointer;
 }
 #submitForm:hover,#resetForm:hover,#phoneNumAddButton:hover,#addressAddButton:hover,.remove-field:hover {
     background-color: #0d4b58;
@@ -161,21 +166,16 @@ h2{
     background-image:url('../Images/refresh_image.jpg') ;
     background-repeat: no-repeat;
     background-size: 100%;
-    border: 1px solid #336ce7;
+    border: 1px;
+    border-color: #5d9c80;
     height: 20px;
     width: 20px;
+    cursor: pointer;
 }
-
-#phoneNumAddButton {
-    border-radius: 50%;
-    background-color: #664b8c54;
-    color: black;
-    border: none;
-    width: 30px;
-    height: 30px;
-    font-size: large;
+#resetCaptcha:hover {
+    border: 2px solid blue;
 }
-.remove-field,#addressAddButton  {
+.remove-field,#addressAddButton, #phoneNumAddButton {
     background-color: #664b8c54;
     color: black;
     border-radius: 50%;
@@ -183,8 +183,9 @@ h2{
     width: 30px;
     height: 30px;
     font-size: large;
+    cursor: pointer;
 }
-#dropZoneDiv {
+.dropZoneDiv {
     border: 1px solid #062b31;
     height: 197px;
     width: 160px;
@@ -198,6 +199,7 @@ h2{
 .address-area {
     width: 249px;
     height: 109px;
+    resize: none;
     display: block;
     background-color: transparent;
     border: 1px solid #085648;
@@ -278,6 +280,7 @@ h2{
     color: #d4b494;
     margin-top: -24px;
     position: absolute;
+    cursor: pointer;
 }
 #imageResetButton:hover {
     background-color: #0d4b58;
