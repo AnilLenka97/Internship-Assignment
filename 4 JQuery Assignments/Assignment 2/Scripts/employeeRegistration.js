@@ -8,7 +8,6 @@
     var wrapperAddress = $('#addressBook');
     var wrapperAddressShow = $('#addressShow');
     var counterAddress = 1000;
-
     //Binded country and states
     var countries = {
         India:["Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal"],
@@ -20,121 +19,74 @@
         Japan:["Aichi", "Akita", "Aomori", "Chiba", "Ehime", "Fukui", "Fukuoka", "Fukushima", "Gifu", "Gumma", "Hiroshima", "Hokkaido", "Hyogo", "Ibaraki", "Ishikawa", "Iwate", "Kagawa", "Kagoshima", "Kanagawa", "Kochi", "Kumamoto", "Kyoto", "Mie", "Miyagi", "Miyazaki", "Nagano", "Nagasaki", "Nara", "Niigata", "Oita", "Okayama", "Okinawa", "Osaka", "Saga", "Saitama", "Shiga", "Shimane", "Shizuoka", "Tochigi", "Tokushima", "Tokyo", "Tottori", "Toyama", "Wakayama", "Yamagata", "Yamaguchi", "Yamanashi"],
         Afghanistan:["Badakhshan", "Badghis", "Baghlan", "Balkh", "Bamian", "Daykondi", "Farah", "Faryab", "Ghazni", "Ghowr", "Helmand", "Herat", "Jowzjan", "Kabul", "Kandahar", "Kapisa", "Khost", "Konar", "Kondoz", "Laghman", "Lowgar", "Nangarhar", "Nimruz", "Nurestan", "Oruzgan", "Paktia", "Paktika", "Panjshir", "Parvan", "Samangan", "Sar-e Pol", "Takhar", "Vardak", "Zabol"]
     }
-
     $(document).ready(function(){
-        $('.error-message').hide();
-        $('#employeeDetails').hide();
-        $('#imageResetButton').hide();
-
+        $('.error-message, #employeeDetails, #imageResetButton').hide();
         generateCaptcha();
-
         $('#answer').keyup(function(){
             validateCaptcha();
         });
-
         $('#firstName').keyup(function(){
             checkFirstName();
         });
-
         $('#lastName').keyup(function(){
             checkLastName();
         });
-
         $('#eMail').keyup(function(){
             checkEmail();
         });
-
         $('#panNum').keyup(function(){
             checkPanNum();
         });
-
-        $('#aadhaarNum').on('keypress keyup',function(e){
-            if((e.keyCode >= 48 && e.keyCode <= 58) || e.keyCode === 32 || e.keyCode === 45 || e.keyCode === 189 )
-            {
-                checkAadhaarNum();
-            }
-            else
-            {
-                checkAadhaarNum();
+        $('#aadhaarNum, #phoneNum, #pinCode').on('keypress', function(e){
+            if(!(e.keyCode >= 48 && e.keyCode <= 57)){
                 e.preventDefault();
                 return false;
             }
         });
-
-        $('#phoneNum').on('keypress keyup click', function(e){
-            validateGender();
-            if((e.keyCode >= 48 && e.keyCode <= 58) || e.keyCode === 32 || e.keyCode === 45 || e.keyCode === 189 )
-            {
-                checkPhoneNum();
-            }
-            else
-            {
-                checkPhoneNum();
-                e.preventDefault();
-                return false;
-            }
+        $('#aadhaarNum').on('change', function(){
+            checkAadhaarNum();
         });
-
+        $('#phoneNum').on('change', function(){
+            checkPhoneNum();
+        });
+        $('#pinCode').on('change', function(){
+            checkPinCode();
+        });
         $('#country').on('change click', function(){
             selectStateAccToCountry($(this),$('#state'));
             checkCountry();
         });
         selectStateAccToCountry($('#country'),$('#state'));
-
         $('#state').on('change click', function(){
             checkState();
         });
-
         $('#city').keyup(function(){
             checkCity(); 
         });
-
         $('#textArea').keyup(function(){
             checkTextAreaAddress();
-            // outputTextAreaAddress($('#textArea'),$('#textAreaShow'));
         });
-
-        $('#pinCode').on('keypress keyup',function(e){
-            if((e.keyCode >= 48 && e.keyCode <= 58) || e.keyCode === 32 || e.keyCode === 45 || e.keyCode === 189 )
-            {
-                checkPinCode();
-            }
-            else
-            {
-                checkPinCode();
-                e.preventDefault();
-                return false;
-            }
-        });
-
         $('#radioInput').click(function(){
             validateGender();
         });
-
         $('#phoneCode').change(function(){
             checkPhoneCode();
         });
-
         $('#resetCaptcha').click(function(){
             generateCaptcha();
         });
-
         $('#submitForm').click(function(){
             submitForm();
         });
-
         $('#phoneNumAddButton').click(function(){
             addNewNumberField();
         });
-
         $('#addressAddButton').click(function(){
             addNewAddressField();
         });
-
         $("#resetForm").click(function(){
             resetForm();
         });
-
         $("#imageResetButton").click(function(){
             $('.upload-image-preview').hide();
             $(this).hide();
@@ -142,42 +94,19 @@
             $('.drop-zone').show();
             photoflag = 0;
         });
-
         // for comntrolling browsers default behaviour while drag and drop
-        window.addEventListener("dragenter", function(e) {
-            if (e.target.id != dropZoneId) {            
-            e.preventDefault();
-            e.dataTransfer.effectAllowed = "none";
-            e.dataTransfer.dropEffect = "none";
+        $(window).on('dragenter dragover drop', function(e) {
+            if (e.target.id !== dropZoneId) {            
+                e.preventDefault();
             }
-        }, false);
-        
-        window.addEventListener("dragover", function(e) {
-            if(e.target.id != dropZoneId) {
-            e.preventDefault();
-            e.dataTransfer.effectAllowed = "none";
-            e.dataTransfer.dropEffect = "none";
-            }
-        });
-        
-        window.addEventListener("drop", function(e){
-            if (e.target.id != dropZoneId) {
-            e.preventDefault();
-            e.dataTransfer.effectAllowed = "none";
-            e.dataTransfer.dropEffect = "none";
-            }
-        });
-        
+        });        
         $(".drop-zone").change(function() {
             $('#inputImageErrorMsg').hide();
             readFile(this);
         });
-
     });
-
     // for upload image file
-    function readFile(passVal)
-    {
+    function readFile(passVal) {
         if (passVal.files && passVal.files[0]) {
             var reader = new FileReader();
             var ext = $('.drop-zone').val().split('.').pop().toLowerCase();
@@ -194,10 +123,8 @@
             $('#dropZoneDiv').removeClass('error-border-color');
             reader.readAsDataURL(passVal.files[0]);
         }
-
         if (passVal.files && passVal.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function (e) {
                 var img = $('<img>').attr('src', e.target.result);
                 $('.upload-image-preview2').html(img);
@@ -205,26 +132,20 @@
             reader.readAsDataURL(passVal.files[0]);
         }
         $('.drop-zone').hide();
-        $('.upload-image-preview').show();
-        $('#imageResetButton').show();
+        $('#imageResetButton, .upload-image-preview').show();
     }
-
     // Adding new dynamic number field
     function addNewNumberField() {
         counter += 1;
-        $(wrapper1).append('<div><select id="phoneCode'+counter+'" class="dynamic-phone-code"><option value="+91">+91</option><option value="+91">+92</option><option value="+91">+93</option><option value="+91">+94</option><option value="+91">+95</option></select><input type="text" id="phoneNum'+counter+'" class="dynamicPhoneNumInput" autocomplete="off"><button type="button" id="removeButton'+counter+'" class="remove-field">x</button><lable class="error-message" id="phoneNum'+counter+'ErrorMsg">**Enter a valid phone No</label></div>');
+        $(wrapper1).append('<div><select id="phoneCode'+counter+'" class="dynamic-phone-code"><option value="+91">+91</option><option value="+91">+92</option><option value="+91">+93</option><option value="+91">+94</option><option value="+91">+95</option></select><input type="text" id="phoneNum'+counter+'" class="dynamicPhoneNumInput" placeholder="Enter your Phone Number" maxlength="10" autocomplete="off"><button type="button" id="removeButton'+counter+'" class="remove-field">x</button><lable class="error-message" id="phoneNum'+counter+'ErrorMsg">**Enter a valid phone No</label></div>');
         $(wrapper2).append('<p id="dynamicPhoneShow'+counter+'"><label class="output-label">Phone Number : </label><label id="phoneCodeShow'+counter+'" class="output-field"></label><label id="phoneNumShow'+counter+'" class="output-field"</p>')
-        
         $('.remove-field').on("click", function(e){
             $(this).parent('div').remove();
             var dynamicId = $(this).attr('id');
             var lastFourChar = dynamicId.substr(dynamicId.length - 4);
             var dynamicId2 = '#dynamicPhoneShow'+lastFourChar;
-            console.log(this);
-            
             $(dynamicId2).remove();
         });
-
         $('.error-message').hide();
         $('.dynamic-phone-code').on('click keyup change',function(){
             var dynamicId = $(this).attr('id');
@@ -233,32 +154,25 @@
             outputPhoneCode($('#'+dynamicId),$(dynamicShowId));
         });
         // Dynamic validation of phone Numbers
-        $('.dynamicPhoneNumInput').on('keypress keyup',function(e){
+        $('.dynamicPhoneNumInput').on('keypress',function(e){
+            if(!(e.keyCode >= 48 && e.keyCode <= 57)) {
+                e.preventDefault();
+                return false;
+            }
+        }).on('change', function() {
             var dynamicId = $(this).attr('id');
             var msgId = '#'+dynamicId+'ErrorMsg';
             var lastFourChar = dynamicId.substr(dynamicId.length - 4);
             var showId = '#phoneNumShow'+lastFourChar;
-            if((e.keyCode >= 48 && e.keyCode <= 58) || e.keyCode === 32 || e.keyCode === 45 || e.keyCode === 189 )
-            {
-                validateNumber($('#'+dynamicId),$(msgId),$(showId),10);
-            }
-            else
-            {
-                validateNumber($('#'+dynamicId),$(msgId),$(showId),10);
-                e.preventDefault();
-                return false;
-            }
+            isNumber($('#'+dynamicId),$(msgId),$(showId),10);
+            isEmpty($('#'+dynamicId),$(msgId));
         });
     }
-
     // Adding new Dynamic Address Field
-    function addNewAddressField()
-    {
+    function addNewAddressField() {
         counterAddress += 1;
-        $(wrapperAddress).append('<div id="addressDynamic'+counterAddress+'" class="dynamic-address" style="clear: left;"><h2>Address Field</h2><div class="address-field-part1"><label class="label-field">Country </label><select class="drop-down-input event-handle-country" id="country'+counterAddress+'"><option value="Select">Select</option><option value="India">India</option><option value="Pakistan">Pakistan</option><option value="China">China</option><option value="Nepal">Nepal</option><option value="Bhutan">Bhutan</option><option value="SriLanka">SriLanka</option><option value="Japan">Japan</option><option value="Afghanistan">Afghanistan</option></select><label for="country'+counterAddress+'" id="countryErrorMsg'+counterAddress+'" class="error-message">**Please Select Your Country</label><label class="label-field">State </label><select class="drop-down-input event-handle-state" id="state'+counterAddress+'"></select><label for="state'+counterAddress+'" id="stateErrorMsg'+counterAddress+'" class="error-message">**Please Select Your State</label><label class="label-field">City </label><input type="text" class="text-field-input event-handle-city" id="city'+counterAddress+'"><label for="city'+counterAddress+'" id="cityErrorMsg'+counterAddress+'" class="error-message">**Please Enter Your City</label></div> <div class="address-field-part2"><label class="label-field" >Address </label><textarea class="address-area event-handle-text-area" id="textArea'+counterAddress+'"></textarea><label for="textArea'+counterAddress+'" id="textAreaErrorMsg'+counterAddress+'" class="error-message">**It shouldn not be empty!!!</label><label class="label-field">PIN Code </label><input type="text" id="pinCode'+counterAddress+'" class="text-field-input event-handle-pin-code" autocomplete="off"> <label for="pinCode'+counterAddress+'" id="pinCodeErrorMsg'+counterAddress+'" class="error-message"></label></div><button type="button" id="addressRemoveButton'+counterAddress+'" class="remove-field">x</button></div>');
-
+        $(wrapperAddress).append('<div id="addressDynamic'+counterAddress+'" class="dynamic-address" style="clear: left;"><h2>Address Field</h2><div class="address-field-part1"><label class="label-field">Country </label><select class="drop-down-input event-handle-country" id="country'+counterAddress+'"><option value="Select">Select</option><option value="India">India</option><option value="Pakistan">Pakistan</option><option value="China">China</option><option value="Nepal">Nepal</option><option value="Bhutan">Bhutan</option><option value="SriLanka">SriLanka</option><option value="Japan">Japan</option><option value="Afghanistan">Afghanistan</option></select><label for="country'+counterAddress+'" id="countryErrorMsg'+counterAddress+'" class="error-message">**Please Select Your Country</label><label class="label-field">State </label><select class="drop-down-input event-handle-state" id="state'+counterAddress+'"></select><label for="state'+counterAddress+'" id="stateErrorMsg'+counterAddress+'" class="error-message">**Please Select Your State</label><label class="label-field">City </label><input type="text" class="text-field-input event-handle-city" placeholder="Enter your City" id="city'+counterAddress+'"><label for="city'+counterAddress+'" id="cityErrorMsg'+counterAddress+'" class="error-message">**Please Enter Your City</label></div> <div class="address-field-part2"><label class="label-field" >Address </label><textarea class="address-area event-handle-text-area" placeholder="Enter your Full Address" id="textArea'+counterAddress+'"></textarea><label for="textArea'+counterAddress+'" id="textAreaErrorMsg'+counterAddress+'" class="error-message">**It shouldn not be empty!!!</label><label class="label-field">PIN Code </label><input type="text" id="pinCode'+counterAddress+'" class="text-field-input event-handle-pin-code" placeholder="Enter your PIN Code" maxlength="6" autocomplete="off"> <label for="pinCode'+counterAddress+'" id="pinCodeErrorMsg'+counterAddress+'" class="error-message"></label></div><button type="button" id="addressRemoveButton'+counterAddress+'" class="remove-field">x</button></div>');
         $(wrapperAddressShow).append('<div id="addressShow'+counterAddress+'"><h2>Address</h2><p id="textAreaShow'+counterAddress+'" class="output-field"></p><p><label class="output-label">City : </label><label id="cityShow'+counterAddress+'" class="output-field"></label></p><p><label class="output-label">State : </label><label id="stateShow'+counterAddress+'" class="output-field"></label></p><p><label class="output-label">Country : </label><label id="countryShow'+counterAddress+'" class="output-field"></label></p><p><label class="output-label">PIN Code : </label><label id="pinCodeShow'+counterAddress+'" class="output-field"></label></p></div>')
-        
         $('.remove-field').on("click", function(e){
             e.preventDefault();
             $(this).parent('div').remove();
@@ -267,14 +181,11 @@
             var dynamicId2 = '#addressShow'+lastFourChar;
             $(dynamicId2).remove();
         });
-
         $('.error-message').hide();
-
         // For Binding Country And State
         var dynamicId2 = '#state'+counterAddress;
         var dynamicId3 = '#country'+counterAddress;
         selectStateAccToCountry($(dynamicId3),$(dynamicId2));
-
         $('.event-handle-country').on('click keyup change',function(){
             var dynamicId = $(this).attr('id');
             var lastFourChar = dynamicId.substr(dynamicId.length - 4);
@@ -286,7 +197,6 @@
             // For Binding Country And State
             selectStateAccToCountry($('#'+dynamicId),$(dynamicId2));
         });
-
         // For Dynamic State Validation
         $('.event-handle-state').on('click keyup change',function(){
             var dynamicId = $(this).attr('id');
@@ -295,34 +205,28 @@
             var dynamicShowId = '#stateShow'+lastFourChar;
             validateDropdownBox($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));   
         });
-
         // For Dynamic City Validation
         $('.event-handle-city').on('keyup',function(){
             var dynamicId = $(this).attr('id');
             var lastFourChar = dynamicId.substr(dynamicId.length - 4);
             var dynamicMsgId = '#cityErrorMsg'+lastFourChar;
             var dynamicShowId = '#cityShow'+lastFourChar;
-            validateCity($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));    
+            validateCity($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));
+            isEmpty($('#'+dynamicId),$(dynamicMsgId));   
         });
-
         // For Dynamic PIN Code Validation
-        $('.event-handle-pin-code').on('keypress keyup',function(e){
+        $('.event-handle-pin-code').on('keypress',function(e){
+            if(!(e.keyCode >= 48 && e.keyCode <= 57)) {
+                e.preventDefault();
+                return false;
+            }
+        }).on('change', function(){
             var dynamicId = $(this).attr('id');
             var lastFourChar = dynamicId.substr(dynamicId.length - 4);
             var dynamicMsgId = '#pinCodeErrorMsg'+lastFourChar;
             var dynamicShowId = '#pinCodeShow'+lastFourChar;
-            if((e.keyCode >= 48 && e.keyCode <= 58) || e.keyCode === 32 || e.keyCode === 45 || e.keyCode === 189 )
-            {
-                validateNumber($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId),6);
-            }
-            else
-            {
-                validateNumber($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId),6);
-                e.preventDefault();
-                return false;
-            }    
+            isNumber($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId),6);
         });
-
         // For dynamic Show Text Area
         $('.event-handle-text-area').on('keyup',function(){
             var dynamicId = $(this).attr('id');
@@ -332,110 +236,84 @@
             validateTextAreaAddress($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));
         });
     }
-
     function checkFirstName() {
         validateName($('#firstName'),$('#firstNameErrorMsg'),$('#firstNameShow'),0);
+        isEmpty($('#firstName'),$('#firstNameErrorMsg'));
     }
-
     function checkLastName() {
         validateName($('#lastName'),$('#lastNameErrorMsg'),$('#lastNameShow'),1);
+        isEmpty($('#lastName'),$('#lastNameErrorMsg'));
     }
-
-    function checkEmail()
-    {
+    function checkEmail() {
         validateEmail($('#eMail'),$('#eMailErrorMsg'),$('#eMailShow'));
+        isEmpty($('#eMail'),$('#eMailErrorMsg'));
     }
-
-    function checkPanNum()
-    {
+    function checkPanNum() {
         validatePanNum($('#panNum'),$('#panErrorMsg'),$('#panNumShow'));
+        isEmpty($('#panNum'),$('#panErrorMsg'));
     }
-
-    function checkAadhaarNum(e)
-    {
-        validateNumber($('#aadhaarNum'),$('#aadhaarErrorMsg'),$('#aadhaarNumShow'),12);
+    function checkAadhaarNum() {
+        isNumber($('#aadhaarNum'),$('#aadhaarErrorMsg'),$('#aadhaarNumShow'),12);
+        isEmpty($('#aadhaarNum'),$('#aadhaarErrorMsg'));
     }
-
-    function checkPhoneNum(e)
-    {
-        validateNumber($('#phoneNum'),$('#phoneNumErrorMsg'),$('#phoneNumShow'),10);
+    function checkPhoneNum() {
+        isNumber($('#phoneNum'),$('#phoneNumErrorMsg'),$('#phoneNumShow'),10);
+        isEmpty($('#phoneNum'),$('#phoneNumErrorMsg'));
     }
-
-    function checkPhoneCode()
-    {
+    function checkPhoneCode() {
         outputPhoneCode($('#phoneCode'),$('#phoneCodeShow'))
     }
-
-    function checkCountry()
-    {
+    function checkCountry() {
         validateDropdownBox($('#country'),$('#countryErrorMsg'),$('#countryShow'));
     }
-
-    function checkState()
-    {
+    function checkState() {
         validateDropdownBox($('#state'),$('#stateErrorMsg'),$('#stateShow'));
     }
-
-    function checkCity()
-    {
+    function checkCity() {
         validateCity($('#city'),$('#cityErrorMsg'),$('#cityShow'));
+        isEmpty($('#city'),$('#cityErrorMsg'));
     }
-
-    function checkTextAreaAddress()
-    {
+    function checkTextAreaAddress() {
         validateTextAreaAddress($('#textArea'),$('#textAreaErrorMsg'),$('#textAreaShow'));
+        isEmpty($('#textArea'),$('#textAreaErrorMsg'));
     }
-
-    function checkPinCode(e)
-    {
-        validateNumber($('#pinCode'),$('#pinCodeErrorMsg'),$('#pinCodeShow'),6);
+    function checkPinCode() {
+        isNumber($('#pinCode'),$('#pinCodeErrorMsg'),$('#pinCodeShow'),6);
+        isEmpty($('#pinCode'),$('#pinCodeErrorMsg'));
     }
-
-
     //Country-State Binding
-    function selectStateAccToCountry(country,state)
-    {
-        
+    function selectStateAccToCountry(country,state) {
         var countryVal = country.val();
-        if(countryVal =="Select")
-        {
+        if(countryVal =="Select") {
             state.empty();
             state.append('<option value="First Select the Country">First Select the Country</option>');
         }
-        else
-        {
+        else {
             state.empty();
             state.append('<option value="Select">Select</option>');
             var len = countries[countryVal].length;
-            for(var i=0;i<len;i++) 
-            {
+            for(var i=0;i<len;i++) {
                 state.append("<option value="+countries[countryVal][i]+" >"+countries[countryVal][i]+"</option>");
             }
         }
-
     }
-
     // for captcha generation
-    function generateCaptcha()
-    {
+    function generateCaptcha() {
         var randNum1 = Math.floor(Math.random() * 30) + 10;
         var randNum2 = Math.floor(Math.random() * 40) + 10;
         var rawSymbol="+-*/";
         var randSymbol=rawSymbol[Math.floor(Math.random() * rawSymbol.length)];
-        if(randNum1 < randNum2)
-        {
+        if(randNum1 < randNum2) {
             $("#digit2").html(randNum1);
             $("#digit1").html(randNum2);
         }
-        else
-        {
+        else {
             $("#digit1").html(randNum1);
             $("#digit2").html(randNum2);
         }
         $("#symbol").html(randSymbol);
         $('#answer').val('');
     }
-
     // captcha Validation
     function validateCaptcha() {
         var digit1 = parseInt($("#digit1").html());
@@ -456,125 +334,90 @@
                 sum = Math.floor(digit1 / digit2);
                 break;
             default :
-                alert('Error');
+                alert('Error in Captcha');
         }
         var answer = $('#answer');
-        if(parseInt(answer.val()) !== sum)
-        {
+        if(parseInt(answer.val()) !== sum) {
             answer.focus();
             answer.removeClass('corrected-border-color').addClass('error-border-color');
             flag = 1;
         }
-        else
-        {
+        else {
             answer.removeClass('error-border-color').addClass('corrected-border-color');
         }
-
     }
-
-
-    // Name Validation
-    function validateName(passVal,msg,output,space) {
+    // Empty Check
+    function isEmpty(passVal,msg) {
         var value = passVal.val().trim();
-        var nameCheck = /[^a-zA-Z 0-9]/;
-        if(value.length === 0)
-        {
+        if(value.length === 0) {
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
             passVal.focus();
             msg.text("**Shouldn't Empty");
             msg.show();
             flag = 1;
         }
-        else if(/[0-9]/.test(value[0]))
-        {
+    }
+    // Name Validation
+    function validateName(passVal,msg,output,space) {
+        var value = passVal.val().trim();
+        var nameCheck = /[^a-zA-Z 0-9]/;
+        if(/[0-9]/.test(value[0])) {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
             msg.text("**Shouldn't start with numbers");
             msg.show();
             flag = 1;
         }
-        else if(nameCheck.test(value))
-        {
+        else if(nameCheck.test(value)) {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
             msg.text("**Special Characters Not Allowed");
             msg.show();
             flag = 1;
         }
-        else
-        {
+        else {
             passVal.removeClass('error-border-color').addClass('corrected-border-color');
             msg.hide();
-            if(space === 1)
-            {
+            if(space === 1) {
                 output.text(' '+value);
             }
-            else
-            {
+            else {
                 output.text(value);
             }
         }
     }
-
     // E-mail validation Function
-    function validateEmail(passVal,msg,output)
-    {
-        var value = passVal.val().trim();
-        var checkEmailRegx = /^[a-zA-Z0-9.]+@+[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
-        if(value.length === 0)
-        {
-            passVal.removeClass('corrected-border-color').addClass('error-border-color');
-            passVal.focus();
-            msg.text("**Shouldn't Empty");
-            msg.show();
-            flag = 1;
-        }
-        else if(!(checkEmailRegx.test(value))  )
-        {
+    function validateEmail(passVal,msg,output) {
+        if(!(/^[a-zA-Z0-9.]+@+[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(passVal.val().trim()))) {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
             msg.text('**Error...Enter a valid email address')
             msg.show();
             flag = 1;
         }
-        else
-        {
+        else {
             passVal.removeClass('error-border-color').addClass('corrected-border-color');
             msg.hide();
-            output.text(value);
-
+            output.text(passVal.val().trim());
         }
     }
-
     //PAN Validation
-    function validatePanNum(passVal,msg,output)
-    {
+    function validatePanNum(passVal,msg,output) {
         var value = passVal.val().trim();
-        if(value.length === 0)
-        {
-            passVal.removeClass('corrected-border-color').addClass('error-border-color');
-            passVal.focus();
-            msg.text("**Shouldn't Empty");
-            msg.show();
-            flag = 1;
-        }
-        else if(!/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/.test(value))
-        {
+        if(!/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/.test(value)) {
             passVal.val(value.toUpperCase());
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
             msg.text('**Error...Enter a valid PAN Number');
             msg.show();
             flag = 1;
         }
-        else
-        {
+        else {
             passVal.val(value.toUpperCase());
             passVal.removeClass('error-border-color').addClass('corrected-border-color');
             msg.hide();
             output.text(passVal.val().trim());
         }
     }
-
     // Radio Button validation
     function validateGender() {
         var val = $('#radioInput');
@@ -583,64 +426,34 @@
             $('#genderErrorMsg').show();
             flag = 1;
         }
-        else
-        {
+        else {
             val.removeClass('error-border-color').addClass('corrected-border-color');
             $('#genderErrorMsg').hide();
             $('#genderShow').text($('input[name="gender"]:checked').val());
         }
     }
-
     //phone Code Show
-    function outputPhoneCode(passVal,output)
-    {
+    function outputPhoneCode(passVal,output) {
         output.text($(passVal).find('option:selected').text());
     }
-
     // Phone Number Validation
-    function validateNumber(passVal,msg,output,length)
-    {
-        var count = 0;
-        var value = passVal.val().trim();
-        if(value.length === 0)
-        {
-            passVal.removeClass('corrected-border-color').addClass('error-border-color');
+    function isNumber(passVal,msg,output,length) {
+        if(passVal.val().trim().length !== length) {
             passVal.focus();
-            msg.text("**Shouldn't Empty");
+            passVal.removeClass('corrected-border-color').addClass('error-border-color');
+            msg.text("**Error...Length should be "+length);
             msg.show();
             flag = 1;
         }
-        else
-        {
-            var i;
-            var len = value.length;
-            for(i=0 ; i < len ; i++)
-            {
-                if(/[0-9]/.test(value[i]))
-                {
-                    count += 1;
-                }
-            }
-            if(count !== length) {
-                passVal.focus();
-                passVal.removeClass('corrected-border-color').addClass('error-border-color');
-                msg.text("**Error...Length should be "+length);
-                msg.show();
-                flag = 1;
-            }
-            else
-            {
-                passVal.removeClass('error-border-color').addClass('corrected-border-color');
-                msg.hide();
-                output.text(value);
-            }
+        else {
+            passVal.removeClass('error-border-color').addClass('corrected-border-color');
+            msg.hide();
+            output.text(passVal.val().trim());
         }
     }
-
     // Drop Down Box Validation Function
     function validateDropdownBox(passVal,msg,output) {
-        if(passVal.val() === 'Select' || passVal.val() === 'First Select the Country' || passVal.val().length === 0)
-        {
+        if(passVal.val() === 'Select' || passVal.val() === 'First Select the Country' || passVal.val().length === 0) {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
             msg.text("**Please select state!!!");
@@ -653,19 +466,9 @@
             output.text($(passVal).find('option:selected').text());
         }
     }
-
     //City Validation
     function validateCity(passVal,msg,output) {
-        var value = passVal.val().trim();
-        if(value.length === 0) {
-            passVal.focus();
-            passVal.removeClass('corrected-border-color').addClass('error-border-color');
-            msg.text("**Shouldn't Empty");
-            msg.show();
-            flag = 1;
-        }
-        else if(/[^A-Za-z 0-9]/.test(value))
-        {
+        if(/[^A-Za-z 0-9]/.test(passVal.val().trim())) {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
             msg.text("**Special Characters are not allowed");
@@ -678,33 +481,18 @@
             output.text(passVal.val().trim());
         }
     }
-
     //Textarea Validation
-    function validateTextAreaAddress(passVal,msg,output)
-    {
-        var value = passVal.val().trim();
-        if(value === '')
-        {
-            passVal.focus();
-            passVal.removeClass('corrected-border-color').addClass('error-border-color');
-            msg.show();
-            flag = 1;
-        }
-        else
-        {
-            passVal.removeClass('error-border-color').addClass('corrected-border-color');
-            msg.hide();
-            output.text(value);
-        }
+    function validateTextAreaAddress(passVal,msg,output) {
+        passVal.removeClass('error-border-color').addClass('corrected-border-color');
+        msg.hide();
+        output.text(passVal.val().trim());
     }
     //Reset Button Click Function
     function resetForm()
     {
         $('form')[0].reset();
-        $('.upload-image-preview').hide();
-        $('#imageResetButton').hide();
+        $('.upload-image-preview, #imageResetButton, .error-message').hide();
         $('.drop-zone').show();
-        $('.error-message').hide();
         // Delete the added phone number fields
         $('.remove-field').each(function(){
             $(this).parent('div').remove();
@@ -713,7 +501,6 @@
             var dynamicId2 = '#dynamicPhoneShow'+lastFourChar;
             $(dynamicId2).remove();
         });
-
         // Delete the added Address Fields
         $('.remove-field').each(function(e){
             $(this).parent('div').remove();
@@ -722,12 +509,10 @@
             var dynamicId2 = '#addressShow'+lastFourChar;
             $(dynamicId2).remove();
         });
-
         $('form').each(function(){
             $(this).find(':input').removeClass('error-border-color corrected-border-color');
         });
-        $('#dropZoneDiv').removeClass('error-border-color');
-        $('#radioInput').removeClass('error-border-color corrected-border-color');
+        $('#dropZoneDiv, #radioInput').removeClass('error-border-color corrected-border-color');
     }
     //Submit Button Click Function
     function submitForm()
@@ -745,13 +530,10 @@
         checkCity();
         checkTextAreaAddress();
         checkPinCode();
-
-        if(photoflag === 0)
-        {
+        if(photoflag === 0) {
             $('#dropZoneDiv').addClass('error-border-color');
             flag = 1;
         }
-
         // For Dynamic Phone Code Validation
         $('.dynamic-phone-code').each(function(){
             var dynamicId = $(this).attr('id');
@@ -759,17 +541,15 @@
             var dynamicShowId = '#phoneCodeShow'+lastFourChar;
             outputPhoneCode($('#'+dynamicId),$(dynamicShowId));
         });
-
         // For Dynamic Phone Number Validation
         $('.dynamicPhoneNumInput').each(function(){
             var dynamicId = $(this).attr('id');
             var msgId = '#'+dynamicId+'ErrorMsg';
             var lastFourChar = dynamicId.substr(dynamicId.length - 4);
             var showId = '#phoneNumShow'+lastFourChar;
-            validateNumber($('#'+dynamicId),$(msgId),$(showId),10);
-
+            isNumber($('#'+dynamicId),$(msgId),$(showId),10);
+            isEmpty($('#'+dynamicId),$(msgId));
         });
-
         // For Dynamic Country Validation
         $('.event-handle-country').each(function(){
             var dynamicId = $(this).attr('id');
@@ -777,9 +557,7 @@
             var dynamicMsgId = '#countryErrorMsg'+lastFourChar;
             var dynamicShowId = '#countryShow'+lastFourChar;
             validateDropdownBox($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));
-    
         });
-
         // For Dynamic State Validation
         $('.event-handle-state').each(function(){
             var dynamicId = $(this).attr('id');
@@ -788,25 +566,24 @@
             var dynamicShowId = '#stateShow'+lastFourChar;
             validateDropdownBox($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));   
         });
-
         // For Dynamic City Validation
         $('.event-handle-city').each(function(){
             var dynamicId = $(this).attr('id');
             var lastFourChar = dynamicId.substr(dynamicId.length - 4);
             var dynamicMsgId = '#cityErrorMsg'+lastFourChar;
             var dynamicShowId = '#cityShow'+lastFourChar;
-            validateCity($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));    
+            validateCity($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));
+            isEmpty($('#'+dynamicId),$(dynamicMsgId));
         });
-
         // For Dynamic PIN Code Validation
         $('.event-handle-pin-code').each(function(){
             var dynamicId = $(this).attr('id');
             var lastFourChar = dynamicId.substr(dynamicId.length - 4);
             var dynamicMsgId = '#pinCodeErrorMsg'+lastFourChar;
             var dynamicShowId = '#pinCodeShow'+lastFourChar;
-            validateNumber($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId),6);    
+            isNumber($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId),6);
+            isEmpty($('#'+dynamicId),$(dynamicMsgId));    
         });
-
         // For dynamic Text Area Validation
         $('.event-handle-text-area').each(function(){
             var dynamicId = $(this).attr('id');
@@ -814,22 +591,19 @@
             var dynamicMsgId = '#textAreaErrorMsg'+lastFourChar;
             var dynamicShowId = '#textAreaShow'+lastFourChar;
             validateTextAreaAddress($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));
+            isEmpty($('#'+dynamicId),$(dynamicMsgId));
         });
-
         if($('[name="gender"]:checked').length===0){
             $('#radioInput').removeClass('corrected-border-color').addClass('error-border-color');;
             $('#genderErrorMsg').show();
             flag = 1;
         }
         validateCaptcha();
-        
-        if(flag === 1)
-        {
+        if(flag === 1) {
             alert('Please Add All the Red Color Border Fields');
             generateCaptcha();
         }
-        else
-        {
+        else {
             alert('Data Saved Successfully');
             $('#employeeRegForm').hide();
             $('#employeeDetails').show();
