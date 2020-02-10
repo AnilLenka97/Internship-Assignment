@@ -137,7 +137,7 @@
     // Adding new dynamic number field
     function addNewNumberField() {
         counter += 1;
-        $(wrapper1).append('<div><select id="phoneCode'+counter+'" class="dynamic-phone-code"><option value="+91">+91</option><option value="+91">+92</option><option value="+91">+93</option><option value="+91">+94</option><option value="+91">+95</option></select><input type="text" id="phoneNum'+counter+'" class="dynamicPhoneNumInput" placeholder="Enter your Phone Number" maxlength="10" autocomplete="off"><button type="button" id="removeButton'+counter+'" class="remove-field">x</button><lable class="error-message" id="phoneNum'+counter+'ErrorMsg">**Enter a valid phone No</label></div>');
+        $(wrapper1).append('<div><select id="phoneCode'+counter+'" class="dynamic-phone-code"><option value="+91">+91</option><option value="+91">+92</option><option value="+91">+93</option><option value="+91">+94</option><option value="+91">+95</option></select><input type="text" id="phoneNum'+counter+'" class="dynamicPhoneNumInput" placeholder="Enter your Phone Number" maxlength="10" autocomplete="off"><button type="button" id="removeButton'+counter+'" class="remove-field">x</button><lable class="error-message"></label></div>');
         $(wrapper2).append('<p id="dynamicPhoneShow'+counter+'"><label class="output-label">Phone Number : </label><label id="phoneCodeShow'+counter+'" class="output-field"></label><label id="phoneNumShow'+counter+'" class="output-field"</p>')
         $('.remove-field').on("click", function(e){
             $(this).parent('div').remove();
@@ -161,7 +161,7 @@
     // Adding new Dynamic Address Field
     function addNewAddressField() {
         counterAddress += 1;
-        $(wrapperAddress).append('<div id="addressDynamic'+counterAddress+'" class="dynamic-address" style="clear: left;"><h2>Address Field</h2><div class="address-field-part1"><label class="label-field">Country </label><select class="drop-down-input event-handle-country" id="country'+counterAddress+'"><option value="">Select</option><option value="India">India</option><option value="Pakistan">Pakistan</option><option value="China">China</option><option value="Nepal">Nepal</option><option value="Bhutan">Bhutan</option><option value="SriLanka">SriLanka</option><option value="Japan">Japan</option><option value="Afghanistan">Afghanistan</option></select><label for="country'+counterAddress+'" id="countryErrorMsg'+counterAddress+'" class="error-message">**Please Select Your Country</label><label class="label-field">State </label><select class="drop-down-input event-handle-state" id="state'+counterAddress+'"></select><label for="state'+counterAddress+'" id="stateErrorMsg'+counterAddress+'" class="error-message">**Please Select Your State</label><label class="label-field">City </label><input type="text" class="text-field-input event-handle-city" placeholder="Enter your City" id="city'+counterAddress+'"><label for="city'+counterAddress+'" id="cityErrorMsg'+counterAddress+'" class="error-message">**Please Enter Your City</label></div> <div class="address-field-part2"><label class="label-field" >Address </label><textarea class="address-area event-handle-text-area" placeholder="Enter your Full Address" id="textArea'+counterAddress+'"></textarea><label for="textArea'+counterAddress+'" id="textAreaErrorMsg'+counterAddress+'" class="error-message">**It shouldn not be empty!!!</label><label class="label-field">PIN Code </label><input type="text" id="pinCode'+counterAddress+'" class="text-field-input event-handle-pin-code" placeholder="Enter your PIN Code" maxlength="6" autocomplete="off"> <label for="pinCode'+counterAddress+'" id="pinCodeErrorMsg'+counterAddress+'" class="error-message"></label></div><button type="button" id="addressRemoveButton'+counterAddress+'" class="remove-field">x</button></div>');
+        $(wrapperAddress).append('<div id="addressDynamic'+counterAddress+'" class="dynamic-address" style="clear: left;"><h2>Address Field</h2><div class="address-field-part1"><label class="label-field">Country </label><select class="drop-down-input event-handle-country" id="country'+counterAddress+'"><option value="">Select</option><option value="India">India</option><option value="Pakistan">Pakistan</option><option value="China">China</option><option value="Nepal">Nepal</option><option value="Bhutan">Bhutan</option><option value="SriLanka">SriLanka</option><option value="Japan">Japan</option><option value="Afghanistan">Afghanistan</option></select><label for="country'+counterAddress+'" class="error-message"></label><label class="label-field">State </label><select class="drop-down-input event-handle-state" id="state'+counterAddress+'"></select><label for="state'+counterAddress+'" class="error-message"></label><label class="label-field">City </label><input type="text" class="text-field-input event-handle-city" placeholder="Enter your City" id="city'+counterAddress+'"><label for="city'+counterAddress+'" class="error-message"></label></div> <div class="address-field-part2"><label class="label-field" >Address </label><textarea class="address-area event-handle-text-area" placeholder="Enter your Full Address" id="textArea'+counterAddress+'"></textarea><label for="textArea'+counterAddress+'" class="error-message"></label><label class="label-field">PIN Code </label><input type="text" id="pinCode'+counterAddress+'" class="text-field-input event-handle-pin-code" placeholder="Enter your PIN Code" maxlength="6" autocomplete="off"> <label for="pinCode'+counterAddress+'" class="error-message"></label></div><button type="button" id="addressRemoveButton'+counterAddress+'" class="remove-field">x</button></div>');
         $(wrapperAddressShow).append('<div id="addressShow'+counterAddress+'"><h2>Address</h2><p id="textAreaShow'+counterAddress+'" class="output-field"></p><p><label class="output-label">City : </label><label id="cityShow'+counterAddress+'" class="output-field"></label></p><p><label class="output-label">State : </label><label id="stateShow'+counterAddress+'" class="output-field"></label></p><p><label class="output-label">Country : </label><label id="countryShow'+counterAddress+'" class="output-field"></label></p><p><label class="output-label">PIN Code : </label><label id="pinCodeShow'+counterAddress+'" class="output-field"></label></p></div>')
         $('.remove-field').on("click", function(e){
             e.preventDefault();
@@ -319,8 +319,7 @@
         if(value.length === 0) {
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
             passVal.focus();
-            msg.text("**Shouldn't Empty");
-            msg.show();
+            msg.text("**Shouldn't Empty").show();
             flag = 1;
         }
     }
@@ -331,15 +330,13 @@
         if(/[0-9]/.test(value[0])) {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
-            msg.text("**Shouldn't start with numbers");
-            msg.show();
+            msg.text("**Shouldn't start with numbers").show();
             flag = 1;
         }
         else if(nameCheck.test(value)) {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
-            msg.text("**Special Characters Not Allowed");
-            msg.show();
+            msg.text("**Special Characters Not Allowed").show();
             flag = 1;
         }
         else {
@@ -358,8 +355,7 @@
         if(!(/^[a-zA-Z0-9.]+@+[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(passVal.val().trim()))) {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
-            msg.text('**Error...Enter a valid email address')
-            msg.show();
+            msg.text('**Error...Enter a valid email address').show();
             flag = 1;
         }
         else {
@@ -374,8 +370,7 @@
         if(!/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/.test(value)) {
             passVal.val(value.toUpperCase());
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
-            msg.text('**Error...Enter a valid PAN Number');
-            msg.show();
+            msg.text('**Error...Enter a valid PAN Number').show();
             flag = 1;
         }
         else {
@@ -408,8 +403,7 @@
         if(passVal.val().trim().length !== length) {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
-            msg.text("**Error...Length should be "+length);
-            msg.show();
+            msg.text("**Error...Length should be "+length).show();
             flag = 1;
         }
         else {
@@ -423,8 +417,7 @@
         if(passVal.val() === "") {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
-            msg.text("**Please select state!!!");
-            msg.show();
+            msg.text("**Please select state!!!").show();
             flag = 1;
         }
         else {
@@ -438,8 +431,7 @@
         if(/[^A-Za-z 0-9]/.test(passVal.val().trim())) {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
-            msg.text("**Special Characters are not allowed");
-            msg.show();
+            msg.text("**Special Characters are not allowed").show();
             flag = 1;
         }
         else {
