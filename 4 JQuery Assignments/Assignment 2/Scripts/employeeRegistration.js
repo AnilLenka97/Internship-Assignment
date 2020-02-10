@@ -141,17 +141,11 @@
         $(wrapper2).append('<p id="dynamicPhoneShow'+counter+'"><label class="output-label">Phone Number : </label><label id="phoneCodeShow'+counter+'" class="output-field"></label><label id="phoneNumShow'+counter+'" class="output-field"</p>')
         $('.remove-field').on("click", function(e){
             $(this).parent('div').remove();
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicId2 = '#dynamicPhoneShow'+lastFourChar;
-            $(dynamicId2).remove();
+            $('#dynamicPhoneShow'+($(this).attr('id').substr($(this).attr('id').length - 4))).remove();
         });
         $('.error-message').hide();
         $('.dynamic-phone-code').on('click keyup change',function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicShowId = '#phoneCodeShow'+lastFourChar;
-            outputPhoneCode($('#'+dynamicId),$(dynamicShowId));
+            outputPhoneCode($(this),$('#phoneCodeShow'+($(this).attr('id').substr($(this).attr('id').length - 4))));
         });
         // Dynamic validation of phone Numbers
         $('.dynamicPhoneNumInput').on('keypress',function(e){
@@ -160,26 +154,19 @@
                 return false;
             }
         }).on('change', function() {
-            var dynamicId = $(this).attr('id');
-            var msgId = '#'+dynamicId+'ErrorMsg';
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var showId = '#phoneNumShow'+lastFourChar;
-            isNumber($('#'+dynamicId),$(msgId),$(showId),10);
-            isEmpty($('#'+dynamicId),$(msgId));
+            isNumber($(this),$(this.nextElementSibling.nextElementSibling),$('#phoneNumShow'+($(this).attr('id').substr($(this).attr('id').length - 4))),10);
+            isEmpty($(this),$(this.nextElementSibling.nextElementSibling));
         });
     }
     // Adding new Dynamic Address Field
     function addNewAddressField() {
         counterAddress += 1;
-        $(wrapperAddress).append('<div id="addressDynamic'+counterAddress+'" class="dynamic-address" style="clear: left;"><h2>Address Field</h2><div class="address-field-part1"><label class="label-field">Country </label><select class="drop-down-input event-handle-country" id="country'+counterAddress+'"><option value="Select">Select</option><option value="India">India</option><option value="Pakistan">Pakistan</option><option value="China">China</option><option value="Nepal">Nepal</option><option value="Bhutan">Bhutan</option><option value="SriLanka">SriLanka</option><option value="Japan">Japan</option><option value="Afghanistan">Afghanistan</option></select><label for="country'+counterAddress+'" id="countryErrorMsg'+counterAddress+'" class="error-message">**Please Select Your Country</label><label class="label-field">State </label><select class="drop-down-input event-handle-state" id="state'+counterAddress+'"></select><label for="state'+counterAddress+'" id="stateErrorMsg'+counterAddress+'" class="error-message">**Please Select Your State</label><label class="label-field">City </label><input type="text" class="text-field-input event-handle-city" placeholder="Enter your City" id="city'+counterAddress+'"><label for="city'+counterAddress+'" id="cityErrorMsg'+counterAddress+'" class="error-message">**Please Enter Your City</label></div> <div class="address-field-part2"><label class="label-field" >Address </label><textarea class="address-area event-handle-text-area" placeholder="Enter your Full Address" id="textArea'+counterAddress+'"></textarea><label for="textArea'+counterAddress+'" id="textAreaErrorMsg'+counterAddress+'" class="error-message">**It shouldn not be empty!!!</label><label class="label-field">PIN Code </label><input type="text" id="pinCode'+counterAddress+'" class="text-field-input event-handle-pin-code" placeholder="Enter your PIN Code" maxlength="6" autocomplete="off"> <label for="pinCode'+counterAddress+'" id="pinCodeErrorMsg'+counterAddress+'" class="error-message"></label></div><button type="button" id="addressRemoveButton'+counterAddress+'" class="remove-field">x</button></div>');
+        $(wrapperAddress).append('<div id="addressDynamic'+counterAddress+'" class="dynamic-address" style="clear: left;"><h2>Address Field</h2><div class="address-field-part1"><label class="label-field">Country </label><select class="drop-down-input event-handle-country" id="country'+counterAddress+'"><option value="">Select</option><option value="India">India</option><option value="Pakistan">Pakistan</option><option value="China">China</option><option value="Nepal">Nepal</option><option value="Bhutan">Bhutan</option><option value="SriLanka">SriLanka</option><option value="Japan">Japan</option><option value="Afghanistan">Afghanistan</option></select><label for="country'+counterAddress+'" id="countryErrorMsg'+counterAddress+'" class="error-message">**Please Select Your Country</label><label class="label-field">State </label><select class="drop-down-input event-handle-state" id="state'+counterAddress+'"></select><label for="state'+counterAddress+'" id="stateErrorMsg'+counterAddress+'" class="error-message">**Please Select Your State</label><label class="label-field">City </label><input type="text" class="text-field-input event-handle-city" placeholder="Enter your City" id="city'+counterAddress+'"><label for="city'+counterAddress+'" id="cityErrorMsg'+counterAddress+'" class="error-message">**Please Enter Your City</label></div> <div class="address-field-part2"><label class="label-field" >Address </label><textarea class="address-area event-handle-text-area" placeholder="Enter your Full Address" id="textArea'+counterAddress+'"></textarea><label for="textArea'+counterAddress+'" id="textAreaErrorMsg'+counterAddress+'" class="error-message">**It shouldn not be empty!!!</label><label class="label-field">PIN Code </label><input type="text" id="pinCode'+counterAddress+'" class="text-field-input event-handle-pin-code" placeholder="Enter your PIN Code" maxlength="6" autocomplete="off"> <label for="pinCode'+counterAddress+'" id="pinCodeErrorMsg'+counterAddress+'" class="error-message"></label></div><button type="button" id="addressRemoveButton'+counterAddress+'" class="remove-field">x</button></div>');
         $(wrapperAddressShow).append('<div id="addressShow'+counterAddress+'"><h2>Address</h2><p id="textAreaShow'+counterAddress+'" class="output-field"></p><p><label class="output-label">City : </label><label id="cityShow'+counterAddress+'" class="output-field"></label></p><p><label class="output-label">State : </label><label id="stateShow'+counterAddress+'" class="output-field"></label></p><p><label class="output-label">Country : </label><label id="countryShow'+counterAddress+'" class="output-field"></label></p><p><label class="output-label">PIN Code : </label><label id="pinCodeShow'+counterAddress+'" class="output-field"></label></p></div>')
         $('.remove-field').on("click", function(e){
             e.preventDefault();
             $(this).parent('div').remove();
-            var dynamicId = $(this).attr('id');              
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicId2 = '#addressShow'+lastFourChar;
-            $(dynamicId2).remove();
+            $('#addressShow'+($(this).attr('id').substr($(this).attr('id').length - 4))).remove();
         });
         $('.error-message').hide();
         // For Binding Country And State
@@ -187,32 +174,18 @@
         var dynamicId3 = '#country'+counterAddress;
         selectStateAccToCountry($(dynamicId3),$(dynamicId2));
         $('.event-handle-country').on('click keyup change',function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicId2 = '#state'+lastFourChar;
-            var dynamicMsgId = '#countryErrorMsg'+lastFourChar;
-            var dynamicShowId = '#countryShow'+lastFourChar;
-
-            validateDropdownBox($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));
+            validateDropdownBox($(this),$(this.nextElementSibling),$('#countryShow'+($(this).attr('id').substr($(this).attr('id').length - 4))));
             // For Binding Country And State
-            selectStateAccToCountry($('#'+dynamicId),$(dynamicId2));
+            selectStateAccToCountry($(this),$('#state'+($(this).attr('id').substr($(this).attr('id').length - 4))));
         });
         // For Dynamic State Validation
         $('.event-handle-state').on('click keyup change',function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicMsgId = '#stateErrorMsg'+lastFourChar;
-            var dynamicShowId = '#stateShow'+lastFourChar;
-            validateDropdownBox($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));   
+            validateDropdownBox($(this),$(this.nextElementSibling),$('#stateShow'+($(this).attr('id').substr($(this).attr('id').length - 4))));   
         });
         // For Dynamic City Validation
         $('.event-handle-city').on('keyup',function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicMsgId = '#cityErrorMsg'+lastFourChar;
-            var dynamicShowId = '#cityShow'+lastFourChar;
-            validateCity($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));
-            isEmpty($('#'+dynamicId),$(dynamicMsgId));   
+            validateCity($(this),$(this.nextElementSibling),$('#cityShow'+($(this).attr('id').substr($(this).attr('id').length - 4))));
+            isEmpty($(this),$(this.nextElementSibling));   
         });
         // For Dynamic PIN Code Validation
         $('.event-handle-pin-code').on('keypress',function(e){
@@ -221,19 +194,13 @@
                 return false;
             }
         }).on('change', function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicMsgId = '#pinCodeErrorMsg'+lastFourChar;
-            var dynamicShowId = '#pinCodeShow'+lastFourChar;
-            isNumber($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId),6);
+            isNumber($(this),$(this.nextElementSibling),$('#pinCodeShow'+($(this).attr('id').substr($(this).attr('id').length - 4))),6);
+            isEmpty($(this),$(this.nextElementSibling));
         });
         // For dynamic Show Text Area
         $('.event-handle-text-area').on('keyup',function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicMsgId = '#textAreaErrorMsg'+lastFourChar;
-            var dynamicShowId = '#textAreaShow'+lastFourChar;
-            validateTextAreaAddress($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));
+            validateTextAreaAddress($(this),$(this.nextElementSibling),$('#textAreaShow'+($(this).attr('id').substr($(this).attr('id').length - 4))));
+            isEmpty($(this),$(this.nextElementSibling));
         });
     }
     function checkFirstName() {
@@ -284,13 +251,13 @@
     //Country-State Binding
     function selectStateAccToCountry(country,state) {
         var countryVal = country.val();
-        if(countryVal =="Select") {
+        if(countryVal === "") {
             state.empty();
-            state.append('<option value="First Select the Country">First Select the Country</option>');
+            state.append('<option value="">First Select the Country</option>');
         }
         else {
             state.empty();
-            state.append('<option value="Select">Select</option>');
+            state.append('<option value="">Select</option>');
             var len = countries[countryVal].length;
             for(var i=0;i<len;i++) {
                 state.append("<option value="+countries[countryVal][i]+" >"+countries[countryVal][i]+"</option>");
@@ -453,7 +420,7 @@
     }
     // Drop Down Box Validation Function
     function validateDropdownBox(passVal,msg,output) {
-        if(passVal.val() === 'Select' || passVal.val() === 'First Select the Country' || passVal.val().length === 0) {
+        if(passVal.val() === "") {
             passVal.focus();
             passVal.removeClass('corrected-border-color').addClass('error-border-color');
             msg.text("**Please select state!!!");
@@ -496,18 +463,12 @@
         // Delete the added phone number fields
         $('.remove-field').each(function(){
             $(this).parent('div').remove();
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicId2 = '#dynamicPhoneShow'+lastFourChar;
-            $(dynamicId2).remove();
+            $('#dynamicPhoneShow'+"$(this).attr('id')".substr($(this).attr('id').length - 4)).remove();
         });
         // Delete the added Address Fields
         $('.remove-field').each(function(e){
             $(this).parent('div').remove();
-            var dynamicId = $(this).attr('id');              
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicId2 = '#addressShow'+lastFourChar;
-            $(dynamicId2).remove();
+            $('#addressShow'+"$(this).attr('id')".substr($(this).attr('id').length - 4)).remove();
         });
         $('form').each(function(){
             $(this).find(':input').removeClass('error-border-color corrected-border-color');
@@ -536,62 +497,35 @@
         }
         // For Dynamic Phone Code Validation
         $('.dynamic-phone-code').each(function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicShowId = '#phoneCodeShow'+lastFourChar;
-            outputPhoneCode($('#'+dynamicId),$(dynamicShowId));
+            outputPhoneCode($(this),$('#phoneCodeShow'+($(this).attr('id').substr($(this).attr('id').length - 4))));
         });
         // For Dynamic Phone Number Validation
         $('.dynamicPhoneNumInput').each(function(){
-            var dynamicId = $(this).attr('id');
-            var msgId = '#'+dynamicId+'ErrorMsg';
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var showId = '#phoneNumShow'+lastFourChar;
-            isNumber($('#'+dynamicId),$(msgId),$(showId),10);
-            isEmpty($('#'+dynamicId),$(msgId));
+            isNumber($(this),$(this.nextElementSibling.nextElementSibling),$('#phoneNumShow'+($(this).attr('id').substr($(this).attr('id').length - 4))),10);
+            isEmpty($(this),$(this.nextElementSibling.nextElementSibling));
         });
         // For Dynamic Country Validation
         $('.event-handle-country').each(function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicMsgId = '#countryErrorMsg'+lastFourChar;
-            var dynamicShowId = '#countryShow'+lastFourChar;
-            validateDropdownBox($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));
+            validateDropdownBox($(this),$(this.nextElementSibling),$('#countryShow'+($(this).attr('id').substr($(this).attr('id').length -4))));
         });
         // For Dynamic State Validation
         $('.event-handle-state').each(function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicMsgId = '#stateErrorMsg'+lastFourChar;
-            var dynamicShowId = '#stateShow'+lastFourChar;
-            validateDropdownBox($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));   
+            validateDropdownBox($(this),$(this.nextElementSibling),$('#stateShow'+($(this).attr('id').substr($(this).attr('id').length - 4))));   
         });
         // For Dynamic City Validation
         $('.event-handle-city').each(function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicMsgId = '#cityErrorMsg'+lastFourChar;
-            var dynamicShowId = '#cityShow'+lastFourChar;
-            validateCity($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));
-            isEmpty($('#'+dynamicId),$(dynamicMsgId));
+            validateCity($(this),$(this.nextElementSibling),$('#cityShow'+($(this).attr('id').substr($(this).attr('id').length - 4))));
+            isEmpty($(this),$(this.nextElementSibling));
         });
         // For Dynamic PIN Code Validation
         $('.event-handle-pin-code').each(function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicMsgId = '#pinCodeErrorMsg'+lastFourChar;
-            var dynamicShowId = '#pinCodeShow'+lastFourChar;
-            isNumber($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId),6);
-            isEmpty($('#'+dynamicId),$(dynamicMsgId));    
+            isNumber($(this),$(this.nextElementSibling),$('#pinCodeShow'+($(this).attr('id').substr($(this).attr('id').length - 4))),6);
+            isEmpty($(this),$(this.nextElementSibling));    
         });
         // For dynamic Text Area Validation
         $('.event-handle-text-area').each(function(){
-            var dynamicId = $(this).attr('id');
-            var lastFourChar = dynamicId.substr(dynamicId.length - 4);
-            var dynamicMsgId = '#textAreaErrorMsg'+lastFourChar;
-            var dynamicShowId = '#textAreaShow'+lastFourChar;
-            validateTextAreaAddress($('#'+dynamicId),$(dynamicMsgId),$(dynamicShowId));
-            isEmpty($('#'+dynamicId),$(dynamicMsgId));
+            validateTextAreaAddress($(this),$(this.nextElementSibling),$('#textAreaShow'+($(this).attr('id').substr($(this).attr('id').length - 4))));
+            isEmpty($(this),$(this.nextElementSibling));
         });
         if($('[name="gender"]:checked').length===0){
             $('#radioInput').removeClass('corrected-border-color').addClass('error-border-color');;
