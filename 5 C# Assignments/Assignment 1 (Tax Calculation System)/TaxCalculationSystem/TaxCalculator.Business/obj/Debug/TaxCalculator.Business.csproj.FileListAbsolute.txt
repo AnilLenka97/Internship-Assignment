@@ -1,0 +1,7 @@
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.Business\bin\Debug\TaxCalculator.Business.dll
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.Business\bin\Debug\TaxCalculator.Business.pdb
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.Business\bin\Debug\TaxCalculator.Infra.dll
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.Business\bin\Debug\TaxCalculator.Infra.pdb
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.Business\obj\Debug\TaxCalculator.Business.csprojResolveAssemblyReference.cache
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.Business\obj\Debug\TaxCalculator.Business.dll
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.Business\obj\Debug\TaxCalculator.Business.pdb

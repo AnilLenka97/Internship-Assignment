@@ -4,16 +4,18 @@ namespace TaxCalculator.UI
 {
     class Program
     {
+        // it is the main program where the program starts
         static void Main(string[] args)
         {
-            var Input = new InputSalaryAndInvestment();
-            Input.getInput();
-            
-            var Calculation = new CalculationLogic();
-            var TaxDetails = Calculation.TaxCalculate(Input.Salary, Input.Investment);
-
-            var Output = new OutputTaxDetails();
-            Output.OutputTaxInfo(TaxDetails);
+            // for input from user
+            var input = new InputSalaryAndInvestment();
+            input.getInput();
+            //for calculation of tax
+            var calculation = new CalculationLogic();
+            var TaxDetails = calculation.TaxCalculate(input.salary, input.investment);
+            //for output to the user
+            var output = new OutputTaxDetails();
+            output.OutputTaxInfo(TaxDetails);
         }
     }
 }

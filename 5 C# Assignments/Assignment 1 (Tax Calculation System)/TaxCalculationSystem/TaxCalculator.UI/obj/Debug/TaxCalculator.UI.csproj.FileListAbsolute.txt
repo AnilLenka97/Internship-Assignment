@@ -1,0 +1,10 @@
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.UI\bin\Debug\TaxCalculator.UI.exe.config
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.UI\bin\Debug\TaxCalculator.UI.exe
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.UI\bin\Debug\TaxCalculator.UI.pdb
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.UI\obj\Debug\TaxCalculator.UI.csprojResolveAssemblyReference.cache
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.UI\obj\Debug\TaxCalculator.UI.exe
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.UI\obj\Debug\TaxCalculator.UI.pdb
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.UI\bin\Debug\TaxCalculator.Business.dll
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.UI\bin\Debug\TaxCalculator.Infra.dll
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.UI\bin\Debug\TaxCalculator.Business.pdb
+D:\Internship Programme\Assignments All\5 C# Assignments\Assignment 1 (Tax Calculation System)\TaxCalculationSystem\TaxCalculator.UI\bin\Debug\TaxCalculator.Infra.pdb
