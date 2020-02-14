@@ -1,4 +1,5 @@
-﻿using TaxCalculator.Business;
+﻿using System;
+using TaxCalculator.Business;
 
 namespace TaxCalculator.UI
 {
@@ -18,6 +19,8 @@ namespace TaxCalculator.UI
             //for output to the user
             var output = new OutputTaxDetails();
             output.OutputTaxInfo(TaxDetails, input.salary);
+
+            Console.ReadKey();
         }
     }
 }
