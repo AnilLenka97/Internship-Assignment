@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaxCalculator.Business;
+﻿using TaxCalculator.Business;
 
 namespace TaxCalculator.UI
 {
@@ -11,10 +6,14 @@ namespace TaxCalculator.UI
     {
         static void Main(string[] args)
         {
-            var testClass = new AddClass();
             var Input = new InputSalaryAndInvestment();
             Input.getInput();
-            Console.WriteLine(testClass.Add(20, 30));
+            
+            var Calculation = new CalculationLogic();
+            var TaxDetails = Calculation.TaxCalculate(Input.Salary, Input.Investment);
+
+            var Output = new OutputTaxDetails();
+            Output.OutputTaxInfo(TaxDetails);
         }
     }
 }
