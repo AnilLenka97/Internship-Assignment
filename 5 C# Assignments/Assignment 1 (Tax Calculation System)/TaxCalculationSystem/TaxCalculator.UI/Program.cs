@@ -9,13 +9,15 @@ namespace TaxCalculator.UI
         {
             // for input from user
             var input = new InputSalaryAndInvestment();
-            input.getInput();
+            input.GetInput();
+
             //for calculation of tax
             var calculation = new CalculationLogic();
             var TaxDetails = calculation.TaxCalculate(input.salary, input.investment);
+
             //for output to the user
             var output = new OutputTaxDetails();
-            output.OutputTaxInfo(TaxDetails);
+            output.OutputTaxInfo(TaxDetails, input.salary);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace TaxCalculator.UI
         public double salary = 0;
         public double investment = 0;
 
-        public void getInput()
+        public void GetInput()
         {
       
         SalaryInput : Console.Write("Enter Your Salary in Rupees : ");
