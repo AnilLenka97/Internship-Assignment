@@ -1,45 +1,41 @@
 ﻿using System;
+using TaxCalculator.Infra;
 
 namespace TaxCalculator.UI
 {
     // It is resposible for input from user and validates the user inputs
-    public class InputSalaryAndInvestment
-    {
-        public double salary = 0;
-        public double investment = 0;
-
-        public void GetInput()
+    public class  InputSalaryAndInvestmentDerived : InputSalaryAndInvestment
+    {        
+        public double Validate(string label)
         {
-      
-        SalaryInput : Console.Write("Enter Your Salary in Rupees : ");
-            if(!double.TryParse(Console.ReadLine(), out salary))
+            double inputValue;
+            Console.Write("Please enter your {0} : ", label);
+            if(!double.TryParse(Console.ReadLine(), out inputValue))
             {
                 Console.WriteLine("**Error...Please enter valid input...");
-                goto SalaryInput;
+                Validate(label);
             }
-            else if(salary < 0)
+            else if(inputValue < 0)
             {
-                Console.WriteLine("**Error...Salary can't be Negative...Try Again...");
-                goto SalaryInput;
+                Console.WriteLine("**Error...The {0} can't be Negative...", label);
+                Validate(label);
             }
+            if(label == "80C Investment")
+            {
+                if (inputValue > salary)
+                {
+                    Console.WriteLine("**Error, Investment can't be greatr than Salary...Tray Again...");
+                    Validate(label);
+                }
+            }
+                
+            return inputValue;
+        }
 
-        InvestmentInput: Console.Write("Enter Your 80C Investment in Rupees : ");
-            if (!double.TryParse(Console.ReadLine(), out investment))
-            {
-                Console.WriteLine("**Error...Please enter valid input...");
-                goto InvestmentInput;
-            }
-            else if (investment < 0)
-            {
-                Console.WriteLine("**Error...80C Investment can't be Negative...Try Again...");
-                goto InvestmentInput;
-            }
-
-            if(investment > salary)
-            {
-                Console.WriteLine("**Error, Investment can't be greatr than Salary...Tray Again...");
-                goto SalaryInput;
-            }
+        public override void GetInput()
+        {
+            salary = Validate("Salary");
+            investment = Validate("80C Investment");
         }
     }
 }

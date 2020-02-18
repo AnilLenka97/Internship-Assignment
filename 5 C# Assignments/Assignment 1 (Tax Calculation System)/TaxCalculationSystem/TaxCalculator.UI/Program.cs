@@ -8,19 +8,39 @@ namespace TaxCalculator.UI
         // it is the main program where the program starts
         static void Main(string[] args)
         {
-            // for input from user
-            var input = new InputSalaryAndInvestment();
-            input.GetInput();
+            while(true)
+            {
+                // for input from user
+                var inputObj = new InputSalaryAndInvestmentDerived();
+                inputObj.GetInput();
 
-            //for calculation of tax
-            var calculation = new CalculationLogic();
-            var TaxDetails = calculation.TaxCalculate(input.salary, input.investment);
+                //for calculation of tax
+                var calculation = new CalculationLogic();
+                var TaxDetails = calculation.TaxCalculate(inputObj);
 
-            //for output to the user
-            var output = new OutputTaxDetails();
-            output.OutputTaxInfo(TaxDetails, input.salary);
+                //for output to the user
+                var output = new OutputTaxDetails();
+                output.OutputTaxInfo(TaxDetails, inputObj.salary);
 
-            Console.ReadKey();
+                //Asking the user to calculate again or exit...
+         reAskUser: Console.Write("\nFor Calculate Again, enter (Y/y) or to exit, enter (N/n) : ");
+                var inputChoice = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+                if (inputChoice == 'N' || inputChoice == 'n')
+                {
+                    break;
+                }
+                else if (inputChoice == 'Y' || inputChoice == 'y')
+                {
+                    Console.Clear();
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("Please Enter a valid Input...");
+                    goto reAskUser;
+                }
+            }
         }
     }
 }
