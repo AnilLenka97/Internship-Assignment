@@ -5,7 +5,7 @@ namespace TaxCalculator.Business
     // The main business logic is implemented in this section and also it instanciate the interfaces here
     public class CalculationLogic : IBusinessLogicInterfaces
     {
-        public double[] TaxCalculate(InputSalaryAndInvestment inputVal)
+        public double[] TaxCalculate(UserInputDetails inputVal)
         {
             var salary = inputVal.salary;
             var investment = inputVal.investment;

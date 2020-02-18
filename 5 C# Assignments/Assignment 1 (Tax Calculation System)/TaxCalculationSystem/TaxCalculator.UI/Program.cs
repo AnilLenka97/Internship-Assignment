@@ -11,19 +11,19 @@ namespace TaxCalculator.UI
             while(true)
             {
                 // for input from user
-                var inputObj = new InputSalaryAndInvestmentDerived();
-                inputObj.GetInput();
+                var inputObj = new InputSalaryAndInvestment();
+                var inputDataObj = inputObj.GetInput();
 
                 //for calculation of tax
                 var calculation = new CalculationLogic();
-                var TaxDetails = calculation.TaxCalculate(inputObj);
+                var TaxDetails = calculation.TaxCalculate(inputDataObj);
 
                 //for output to the user
                 var output = new OutputTaxDetails();
-                output.OutputTaxInfo(TaxDetails, inputObj.salary);
+                output.OutputTaxInfo(TaxDetails, inputDataObj.salary);
 
                 //Asking the user to calculate again or exit...
-         reAskUser: Console.Write("\nFor Calculate Again, enter (Y/y) or to exit, enter (N/n) : ");
+      reAskUser:Console.Write("\nFor Calculate Again, enter (Y/y) or to exit, enter (N/n) : ");
                 var inputChoice = Console.ReadKey().KeyChar;
                 Console.WriteLine();
                 if (inputChoice == 'N' || inputChoice == 'n')
